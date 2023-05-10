@@ -7,14 +7,6 @@
     android:background="#EAFFDD"
     tools:context=".activity.RegisterActivity">
 
-    <ScrollView
-        android:layout_width="412dp"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="0dp"
@@ -35,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:text="Inserisci le tue informazioni!"
+                android:text="@string/inserisci_le_tue_informazioni"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp" />
@@ -51,7 +43,7 @@
                     android:id="@+id/Nome"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="Nome"
+                    android:text="@string/nome"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp" />
@@ -62,9 +54,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
-                    android:gravity="left"
+                    android:gravity="start"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
                     android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="@+id/layout_nome" />
+                    app:layout_constraintStart_toStartOf="@+id/layout_nome"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </LinearLayout>
 
 
@@ -79,7 +74,7 @@
                     android:id="@+id/Cognome"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="Cognome"
+                    android:text="@string/cognome"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp" />
@@ -90,9 +85,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
-                    android:gravity="left"
+                    android:gravity="start"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
                     android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="@+id/layout_cognome" />
+                    app:layout_constraintStart_toStartOf="@+id/layout_cognome"
+                    tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </LinearLayout>
 
 
@@ -107,7 +105,7 @@
                     android:id="@+id/Telefono"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="Telefono"
+                    android:text="@string/telefono"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp" />
@@ -118,9 +116,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
-                    android:gravity="left"
+                    android:gravity="start"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
                     android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="@+id/layout_telefono" />
+                    app:layout_constraintStart_toStartOf="@+id/layout_telefono"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
 
@@ -129,7 +130,7 @@
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Ruolo"
+                android:text="@string/ruolo"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -145,7 +146,7 @@
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Sesso"
+                    android:text="@string/sesso"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp" />
@@ -155,7 +156,7 @@
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Età"
+                    android:text="@string/età"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp" />
@@ -182,7 +183,7 @@
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Email"
+                android:text="@string/email"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -193,7 +194,7 @@
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Password"
+                android:text="@string/password"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -203,7 +204,7 @@
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Conferma Password"
+                android:text="@string/conferma_password"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp" />
@@ -214,11 +215,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="55dp"
                 android:layout_marginTop="15dp"
-                android:text="Registrati"
+                android:text="@string/registrati"
                 app:backgroundTint="#4CAF50"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

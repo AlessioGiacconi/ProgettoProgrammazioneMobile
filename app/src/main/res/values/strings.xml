@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">ProgettoProgrammazioneMobile</string>
     <string name="registrati"><b>Registrati!</b></string>
+    <string name="logo">Logo</string>
+    <string name="sesso">Sesso</string>
+    <string name="nome">Nome</string>
+    <string name="conferma_password">Conferma Password</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="età">Età</string>
+    <string name="ruolo">Ruolo</string>
+    <string name="telefono">Telefono</string>
+    <string name="cognome">Cognome</string>
+    <string name="inserisci_le_tue_informazioni">Inserisci le tue informazioni!</string>
 </resources>

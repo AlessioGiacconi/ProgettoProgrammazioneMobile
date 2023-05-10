@@ -13,7 +13,7 @@
         android:layout_height="229dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -24,19 +24,21 @@
         app:layout_constraintEnd_toEndOf="@id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:srcCompat="@drawable/meetkick_logo" />
+        app:srcCompat="@drawable/meetkick_logo"
+        android:contentDescription="@string/logo" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_gravity="center"
         android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/layout_bg"
         android:orientation="vertical"
-        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -53,7 +55,8 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="25sp"
-            app:fontFamily="@font/mclaren" />
+            app:fontFamily="@font/mclaren"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/textView4"
@@ -64,52 +67,59 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16sp"
-            app:fontFamily="@font/mclaren" />
+            app:fontFamily="@font/mclaren"
+            tools:ignore="HardcodedText" />
 
         <EditText
             android:id="@+id/et_user_name"
-            android:layout_gravity="center"
             android:layout_width="220dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/layout_form"
             android:gravity="center_vertical"
             android:hint="Username"
+            android:inputType="text"
             android:padding="5dip"
             android:textColor="#000000"
             android:textColorHint="#8C8686"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"/>
+            tools:ignore="HardcodedText"
+            android:importantForAutofill="no" />
 
         <EditText
             android:id="@+id/et_password"
-            android:layout_gravity="center"
             android:layout_width="220dp"
-            android:layout_height="30dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
             android:background="@drawable/layout_form"
-            android:padding="5dip"
-            android:hint="Password"
             android:gravity="center_vertical"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:padding="5dip"
             android:textColor="#000000"
             android:textColorHint="#8C8686"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="@+id/linearLayout"/>
+            tools:ignore="HardcodedText"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/button"
-            android:layout_gravity="center"
             android:layout_width="144dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:gravity="center_vertical"
-            android:textAlignment="center"
-            android:text="Login"
             android:fontFamily="@font/mclaren"
+            android:gravity="center_vertical"
+            android:text="Login"
+            android:textAlignment="center"
+            app:backgroundTint="#4CAF50"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:backgroundTint="#4CAF50"
-            tools:ignore="RtlCompat" />
+            tools:ignore="HardcodedText,RtlCompat,TextContrastCheck" />
 
         <TextView
             android:id="@+id/textView5"
@@ -121,7 +131,8 @@
             android:textColor="#000000"
             android:textSize="16sp"
             app:fontFamily="@font/mclaren"
-            app:layout_constraintStart_toStartOf="@id/button"/>
+            app:layout_constraintStart_toStartOf="@id/button"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/registrati"
