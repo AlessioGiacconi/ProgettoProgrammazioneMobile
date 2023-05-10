@@ -107,6 +107,7 @@
                 android:textColor="#000000"
                 app:layout_constraintStart_toStartOf="@+id/layout_cognome"
                 tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
         </LinearLayout>
 
 
