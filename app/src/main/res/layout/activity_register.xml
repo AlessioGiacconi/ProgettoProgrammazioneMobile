@@ -24,10 +24,21 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
+            android:id="@+id/ciao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:text="Benvenuto in Meet-Kick !!!"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="17sp"
+            app:fontFamily="@font/mclaren" />
+
+        <TextView
             android:id="@+id/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:text="Inserisci le tue informazioni"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -337,7 +348,7 @@
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10.5dp"
                 android:background="@drawable/layout_form"
                 android:gravity="start"
                 android:importantForAutofill="no"
@@ -353,7 +364,7 @@
             android:layout_width="222dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="35dp"
             android:text="registrati"
             app:backgroundTint="#4CAF50"
             app:layout_constraintEnd_toEndOf="parent"
