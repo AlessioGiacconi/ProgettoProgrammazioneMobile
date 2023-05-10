@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
-                    android:textAlignment="left"
+                    android:gravity="left"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="@+id/layout_nome" />
             </LinearLayout>
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
-                    android:textAlignment="left"
+                    android:gravity="left"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="@+id/layout_cognome" />
             </LinearLayout>
@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
-                    android:textAlignment="left"
+                    android:gravity="left"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="@+id/layout_telefono" />
             </LinearLayout>
