@@ -12,5 +12,6 @@
     <string name="ruolo">Ruolo</string>
     <string name="telefono">Telefono</string>
     <string name="cognome">Cognome</string>
+    <string name="login"><b>Login!</b></string>
     <string name="inserisci_le_tue_informazioni">Inserisci le tue informazioni!</string>
 </resources>

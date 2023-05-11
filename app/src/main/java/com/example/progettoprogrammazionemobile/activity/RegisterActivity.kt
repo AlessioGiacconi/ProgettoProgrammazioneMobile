@@ -16,14 +16,24 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         val sesso = listOf("Maschio", "Femmina")
-        val autoComplete : AutoCompleteTextView = findViewById(R.id.Autocomplete_text_view_sesso)
-        val adapter = ArrayAdapter(this, R.layout.dropdown_item, sesso)
+        val ruolo = listOf("Attaccante", "Difensore", "Portiere")
+        val autoCompleteSesso : AutoCompleteTextView = findViewById(R.id.Autocomplete_text_view_sesso)
+        val adapterSesso = ArrayAdapter(this, R.layout.dropdown_item, sesso)
+        val autoCompleteRuolo : AutoCompleteTextView = findViewById(R.id.Autocomplete_text_view_ruolo)
+        val adapterRuolo = ArrayAdapter(this, R.layout.dropdown_item, ruolo)
 
-        autoComplete.setAdapter(adapter)
-        autoComplete.onItemClickListener = AdapterView.OnItemClickListener{
+        autoCompleteSesso.setAdapter(adapterSesso)
+        autoCompleteSesso.onItemClickListener = AdapterView.OnItemClickListener{
                 adapterView, view, i, l ->
 
-            val itemSelected = adapterView.getItemAtPosition(i)
+            val sessoSelezionato = adapterView.getItemAtPosition(i)
+        }
+        
+        autoCompleteRuolo.setAdapter(adapterRuolo)
+        autoCompleteRuolo.onItemClickListener = AdapterView.OnItemClickListener{
+            adapterView, view, i, l ->
+
+            val ruoloSelezionato = adapterView.getItemAtPosition(i)
         }
     }
 }
