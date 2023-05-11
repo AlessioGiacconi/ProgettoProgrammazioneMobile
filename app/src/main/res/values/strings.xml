@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">ProgettoProgrammazioneMobile</string>
+    <string name="welcome">Benvenuto in Meet&amp;Kick !!</string>
     <string name="registrati"><b>Registrati!</b></string>
     <string name="logo">Logo</string>
     <string name="sesso">Sesso</string>
