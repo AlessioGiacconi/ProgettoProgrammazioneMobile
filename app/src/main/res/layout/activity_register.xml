@@ -8,16 +8,55 @@
     tools:context=".activity.RegisterActivity">
 
 
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="265dp"
+        android:layout_height="148dp"
+        android:background="#FFFFFF"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
 
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/logo_Meet_Kick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/meetkick_logo" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="143dp"
+        android:layout_height="148dp"
+        android:background="#FFFFFF"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="267dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <ImageView
+            android:id="@+id/immagine_utente"
+            android:layout_width="100"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="#FFFFFF"
+            tools:srcCompat="@tools:sample/avatars" />
+    </FrameLayout>
+
+
+    <LinearLayout
             android:id="@+id/linearLayout"
+            android:background="@drawable/layout_bg"
+            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="170dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginBottom="300dp"
+            android:layout_marginBottom="210dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,8 +68,7 @@
                 android:id="@+id/ciao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/welcome"
+                android:text="Benvenuto !! "
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp"
@@ -41,29 +79,29 @@
                 android:id="@+id/welcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="@string/inserisci_le_tue_informazioni"
+                android:layout_marginTop="8dp"
+                android:text="Inserisci qui le tue informazioni"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="18sp"
-                app:fontFamily="@font/mclaren" />/>
+                app:fontFamily="@font/mclaren" />
 
             <LinearLayout
                 android:id="@+id/layout_nome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/Nome"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/nome"
+                    android:text="Nome"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp"
-                    app:fontFamily="@font/mclaren" />/>
+                    app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_nome"
@@ -91,7 +129,7 @@
                     android:id="@+id/Cognome"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/cognome"
+                    android:text="Cognome"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp"
@@ -123,7 +161,7 @@
                     android:id="@+id/Telefono"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/telefono"
+                    android:text="Telefono"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp"
@@ -155,11 +193,11 @@
                 android:id="@+id/Ruolo"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:text="@string/ruolo"
+                android:text="Ruolo"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />/>
+                app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_Ruolo"
@@ -188,7 +226,7 @@
                     android:id="@+id/Sesso"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/sesso"
+                    android:text="Sesso"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp"
@@ -222,7 +260,7 @@
                 android:id="@+id/Età"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:text="@string/età"
+                android:text="Età"
                 android:textAlignment="center"
                 android:textColor="#000000"
                 android:textSize="16sp"
@@ -245,6 +283,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:background="@drawable/layout_bg"
         android:layout_height="213dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
@@ -261,14 +300,14 @@
         android:id="@+id/layout_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
     <TextView
         android:id="@+id/Email"
         android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:text="@string/email"
+        android:text="Email"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -301,7 +340,7 @@
         android:id="@+id/Password"
         android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:text="@string/password"
+        android:text="Password"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -333,7 +372,7 @@
         android:id="@+id/Conferma_Password"
         android:layout_width="107dp"
         android:layout_height="wrap_content"
-        android:text="@string/conferma_password"
+        android:text="Conferma password"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
@@ -344,7 +383,7 @@
             android:layout_width="107dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10.5dp"
             android:background="@drawable/layout_form"
             android:gravity="start"
             android:inputType="textPassword"
@@ -361,12 +400,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="55dp"
             android:layout_marginTop="15dp"
-            android:text="@string/registrati"
+            android:text="registrati"
             app:backgroundTint="#4CAF50"
             app:fontFamily="@font/mclaren"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="TextContrastCheck" />/>
+            tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
 
