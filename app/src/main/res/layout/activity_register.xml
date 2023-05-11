@@ -232,19 +232,25 @@
                     android:textSize="16sp"
                     app:fontFamily="@font/mclaren" />/>
 
-
-                <EditText
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_sesso"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp"
-                    android:background="@drawable/layout_form"
-                    android:gravity="start"
-                    android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="@+id/layout_sesso"
-                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
-                    android:inputType="text"
-                    android:importantForAutofill="no" />
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/Autocomplete_text_view_sesso"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/layout_form"
+                        android:textSize="16sp"
+                        android:inputType="none"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
 
             </LinearLayout>
 
