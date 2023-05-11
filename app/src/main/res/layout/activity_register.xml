@@ -7,13 +7,8 @@
     android:background="#EAFFDD"
     tools:context=".activity.RegisterActivity">
 
-    <ScrollView
-        android:layout_width="412dp"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
+
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -31,6 +26,18 @@
             app:layout_constraintVertical_bias="0.0">
 
             <TextView
+                android:id="@+id/ciao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Benvenuto in Meet - Kick !!"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:fontFamily="@font/mclaren" />
+
+
+            <TextView
                 android:id="@+id/welcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,7 +45,8 @@
                 android:text="Inserisci le tue informazioni!"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:fontFamily="@font/mclaren" />/>
 
             <LinearLayout
                 android:id="@+id/layout_nome"
@@ -54,7 +62,8 @@
                     android:text="Nome"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:fontFamily="@font/mclaren" />/>
 
                 <EditText
                     android:id="@+id/et_nome"
@@ -82,7 +91,8 @@
                     android:text="Cognome"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:fontFamily="@font/mclaren" />/>
 
                 <EditText
                     android:id="@+id/et_cognome"
@@ -110,7 +120,8 @@
                     android:text="Telefono"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:fontFamily="@font/mclaren" />/>
 
                 <EditText
                     android:id="@+id/et_telefono"
@@ -121,22 +132,43 @@
                     android:gravity="left"
                     android:textColor="#000000"
                     app:layout_constraintStart_toStartOf="@+id/layout_telefono" />
+
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/layout_Ruolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <TextView
+                <TextView
                 android:id="@+id/Ruolo"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:text="Ruolo"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:fontFamily="@font/mclaren" />/>
+
+                <EditText
+                    android:id="@+id/et_Ruolo"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/layout_form"
+                    android:gravity="left"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/layout_Ruolo" />
+
+            </LinearLayout>
+
 
             <LinearLayout
+                android:id="@+id/layout_sesso"
                 android:layout_width="match_parent"
-                android:layout_height="53dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
@@ -144,81 +176,171 @@
                     android:id="@+id/Sesso"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:text="Sesso"
                     android:textAlignment="center"
                     android:textColor="#000000"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    app:fontFamily="@font/mclaren" />/>
 
-                <TextView
-                    android:id="@+id/Età"
+
+                <EditText
+                    android:id="@+id/et_sesso"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Età"
-                    android:textAlignment="center"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/layout_form"
+                    android:gravity="left"
                     android:textColor="#000000"
-                    android:textSize="16sp" />
+                    app:layout_constraintStart_toStartOf="@+id/layout_sesso" />
 
             </LinearLayout>
 
-        </LinearLayout>
 
-        <LinearLayout
+             <LinearLayout
+            android:id="@+id/layout_età"
             android:layout_width="match_parent"
-            android:layout_height="213dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginEnd="40dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layout_constraintVertical_bias="0.229">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/Email"
+                android:id="@+id/Età"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Email"
+                android:text="Età"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                app:fontFamily="@font/mclaren" />/>
 
-
-            <TextView
-                android:id="@+id/Password"
+            <EditText
+                android:id="@+id/et_età"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Password"
-                android:textAlignment="center"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/layout_form"
+                android:gravity="left"
                 android:textColor="#000000"
-                android:textSize="16sp" />
+                app:layout_constraintStart_toStartOf="@+id/layout_età" />
 
-            <TextView
-                android:id="@+id/Conferma_Password"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Conferma Password"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="222dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
-                android:layout_marginTop="15dp"
-                android:text="Registrati"
-                app:backgroundTint="#4CAF50"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
+            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="213dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.229">
+
+
+    <LinearLayout
+        android:id="@+id/layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/Email"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/mclaren" />/>
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/layout_form"
+            android:gravity="left"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/layout_email" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layout_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/Password"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/mclaren" />/>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/layout_form"
+            android:gravity="left"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/layout_password" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_Conferma_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/Conferma_Password"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
+        android:text="Conferma Password"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:fontFamily="@font/mclaren" />/>
+
+        <EditText
+            android:id="@+id/et_Conferma_password"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/layout_form"
+            android:gravity="left"
+            android:textColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/layout_Conferma_password" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="15dp"
+        android:text="Registrati"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:fontFamily="@font/mclaren" />/>
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
