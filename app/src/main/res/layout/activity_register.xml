@@ -4,376 +4,221 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#EAFFDD"
     tools:context=".activity.RegisterActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="300dp"
-        android:orientation="vertical"
+    <ScrollView
+        android:layout_width="412dp"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:id="@+id/ciao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:text="Benvenuto in Meet-Kick !!!"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="17sp"
-            app:fontFamily="@font/mclaren" />
-
-        <TextView
-            android:id="@+id/welcome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Inserisci le tue informazioni"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            app:fontFamily="@font/mclaren" />
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/layout_nome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="300dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
-                android:id="@+id/Nome"
-                android:layout_width="107dp"
+                android:id="@+id/welcome"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nome"
+                android:layout_marginTop="30dp"
+                android:text="Inserisci le tue informazioni!"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
+                android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/et_nome"
-                android:layout_width="107dp"
+            <LinearLayout
+                android:id="@+id/layout_nome"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_nome"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-        </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/Nome"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:text="Nome"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_nome"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/layout_form"
+                    android:gravity="left"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/layout_nome" />
+            </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/layout_cognome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/Cognome"
-                android:layout_width="107dp"
+            <LinearLayout
+                android:id="@+id/layout_cognome"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cognome"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/et_cognome"
-                android:layout_width="107dp"
+                <TextView
+                    android:id="@+id/Cognome"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cognome"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/et_cognome"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/layout_form"
+                    android:gravity="left"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/layout_cognome" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/layout_telefono"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_cognome"
-                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/Telefono"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:text="Telefono"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
+                <EditText
+                    android:id="@+id/et_telefono"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:background="@drawable/layout_form"
+                    android:gravity="left"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toStartOf="@+id/layout_telefono" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_telefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/Telefono"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:text="Telefono"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
-
-            <EditText
-                android:id="@+id/et_telefono"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_telefono"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layout_ruolo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/Ruolo"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Ruolo"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
+                android:textSize="16sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="53dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/et_ruolo"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_ruolo"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                <TextView
+                    android:id="@+id/Sesso"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Sesso"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/Età"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Età"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout_sesso"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:id="@+id/sesso"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:text="Sesso"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
-
-            <EditText
-                android:id="@+id/et_sesso"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_sesso"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/layout_età"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-
-            <TextView
-                android:id="@+id/età"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:text="Età"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
-
-            <EditText
-                android:id="@+id/et_età"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_età"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="213dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="100dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
-
-
-        <LinearLayout
-            android:id="@+id/layout_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            android:layout_height="213dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.229">
 
             <TextView
                 android:id="@+id/Email"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Email"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
+                android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/et_email"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_età"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/layout_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/Password"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Password"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
-
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_password"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:id="@+id/layout_conferma_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/Conferma_Password"
                 android:layout_width="107dp"
                 android:layout_height="wrap_content"
-                android:text="Conferma password"
+                android:layout_marginTop="10dp"
+                android:text="Conferma Password"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
-                app:fontFamily="@font/mclaren" />
+                android:textSize="16sp" />
 
-            <EditText
-                android:id="@+id/et_conferma_password"
-                android:layout_width="107dp"
+            <Button
+                android:id="@+id/button"
+                android:layout_width="222dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="10.5dp"
-                android:background="@drawable/layout_form"
-                android:gravity="start"
-                android:importantForAutofill="no"
-                android:inputType="text"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="@+id/layout_conferma_password"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="15dp"
+                android:text="Registrati"
+                app:backgroundTint="#4CAF50"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="222dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginTop="35dp"
-            android:text="registrati"
-            app:backgroundTint="#4CAF50"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:fontFamily="@font/mclaren" />
-
-    </LinearLayout>
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.333" />
+        <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.333" />
         <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/drawable/layout_bg.xml" value="0.1" />
         <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/drawable/layout_form.xml" value="0.1" />
         <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/drawable/layout_logo.xml" value="0.1" />
         <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/font/personalized_fonts.xml" value="0.39739583333333334" />
-        <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/layout/activity_login.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
         <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile/app/src/main/res/layout/activity_register.xml" value="0.22" />
         <entry key="..\:/Users/UTENTE/AndroidStudioProjects/ProgettoProgrammazioneMobile2/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
