@@ -8,7 +8,7 @@
     <string name="conferma_password">Conferma Password</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="età">Età</string>
+    <string name="data_di_nascita">Data di Nascita</string>
     <string name="ruolo">Ruolo</string>
     <string name="telefono">Telefono</string>
     <string name="cognome">Cognome</string>

@@ -53,19 +53,20 @@
             app:layout_constraintStart_toEndOf="@+id/frameLayout2"
             app:layout_constraintTop_toTopOf="parent">
 
+
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintStart_toStartOf="@id/frameLayout3"
-                app:layout_constraintEnd_toEndOf="@id/frameLayout3"
-                app:layout_constraintTop_toTopOf="@id/frameLayout3"
-                app:layout_constraintBottom_toBottomOf="@id/frameLayout3"
                 app:civ_border_color="#32800F"
                 app:civ_border_width="4dp"
                 app:civ_shadow="true"
                 app:civ_shadow_color="#32800F"
-                app:civ_shadow_radius="5dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:civ_shadow_radius="7dp"
+                app:layout_constraintBottom_toBottomOf="@id/frameLayout3"
+                app:layout_constraintEnd_toEndOf="@id/frameLayout3"
+                app:layout_constraintStart_toStartOf="@id/frameLayout3"
+                app:layout_constraintTop_toTopOf="@id/frameLayout3"
+                app:srcCompat="@drawable/icona_profilo" />
         </FrameLayout>
 
 
@@ -286,17 +287,17 @@
 
 
             <LinearLayout
-                android:id="@+id/layout_età"
+                android:id="@+id/layout_data_di_nascita"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/Età"
+                    android:id="@+id/Data_di_Nascita"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/età"
+                    android:text="@string/data_di_nascita"
                     android:textAlignment="center"
                     android:textColor="#000000"
                     android:textSize="16sp"
@@ -306,13 +307,14 @@
                     android:id="@+id/et_età"
                     android:layout_width="107dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
-                    android:gravity="start"
+                    android:gravity="center"
                     android:importantForAutofill="no"
-                    android:inputType="number"
+                    android:inputType="date"
                     android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="@+id/layout_età"
+                    app:layout_constraintStart_toStartOf="@id/layout_data_di_nascita"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </LinearLayout>
@@ -325,6 +327,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
+            android:gravity="center"
             android:background="@drawable/layout_bg"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -437,7 +440,6 @@
                 android:id="@+id/register_btn"
                 android:layout_width="222dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="55dp"
                 android:layout_marginTop="15dp"
                 android:text="@string/registrati"
                 app:backgroundTint="#4CAF50"
