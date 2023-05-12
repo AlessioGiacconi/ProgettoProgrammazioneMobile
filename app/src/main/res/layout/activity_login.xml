@@ -11,6 +11,8 @@
         android:id="@+id/frameLayout"
         android:layout_width="408dp"
         android:layout_height="229dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,12 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/layout_logo"
-            app:layout_constraintBottom_toBottomOf="@+id/view"
-            app:layout_constraintEnd_toEndOf="@id/view"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/view"
-            app:srcCompat="@drawable/meetkick_logo"
-            android:contentDescription="@string/logo" />
+            android:contentDescription="@string/logo"
+            app:layout_constraintBottom_toBottomOf="@id/frameLayout"
+            app:layout_constraintEnd_toEndOf="@id/frameLayout"
+            app:layout_constraintStart_toStartOf="@id/frameLayout"
+            app:layout_constraintTop_toTopOf="@id/frameLayout"
+            app:srcCompat="@drawable/meetkick_logo" />
 
     </FrameLayout>
 
@@ -63,7 +65,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="5dp"
             android:text="Inserisci le tue credenziali"
             android:textAlignment="center"
             android:textColor="#000000"

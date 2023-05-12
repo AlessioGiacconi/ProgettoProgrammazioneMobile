@@ -19,7 +19,9 @@
             android:id="@+id/frameLayout2"
             android:layout_width="265dp"
             android:layout_height="148dp"
-            android:background="#FFFFFF"
+            android:layout_marginEnd="2dp"
+
+            app:layout_constraintEnd_toStartOf="@+id/frameLayout3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
@@ -29,7 +31,17 @@
                 android:id="@+id/logo_Meet_Kick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/meetkick_logo" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/layout_logo"
+                app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
+                app:layout_constraintEnd_toEndOf="@id/frameLayout2"
+                app:layout_constraintStart_toStartOf="@+id/frameLayout2"
+                app:layout_constraintTop_toTopOf="@+id/frameLayout2"
+                app:srcCompat="@drawable/meetkick_logo"
+                android:contentDescription="@string/logo" />
         </FrameLayout>
 
 
@@ -37,27 +49,30 @@
             android:id="@+id/frameLayout3"
             android:layout_width="143dp"
             android:layout_height="148dp"
-            android:background="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintStart_toEndOf="@+id/frameLayout2"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/immagine_utente"
-                android:layout_width="100dp"
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginBottom="0dp"
-                android:background="#FFFFFF"
+                app:layout_constraintStart_toStartOf="@id/frameLayout3"
+                app:layout_constraintEnd_toEndOf="@id/frameLayout3"
+                app:layout_constraintTop_toTopOf="@id/frameLayout3"
+                app:layout_constraintBottom_toBottomOf="@id/frameLayout3"
+                app:civ_border_color="#32800F"
+                app:civ_border_width="4dp"
+                app:civ_shadow="true"
+                app:civ_shadow_color="#32800F"
+                app:civ_shadow_radius="5dp"
                 tools:srcCompat="@tools:sample/avatars" />
         </FrameLayout>
 
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="312dp"
-            android:layout_height="410dp"
+            android:layout_width="match_parent"
+            android:layout_height="407dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="160dp"
             android:layout_marginEnd="40dp"
