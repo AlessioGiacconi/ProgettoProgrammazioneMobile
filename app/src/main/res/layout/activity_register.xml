@@ -20,8 +20,9 @@
             android:layout_width="265dp"
             android:layout_height="148dp"
             android:layout_marginEnd="2dp"
-
-            app:layout_constraintEnd_toStartOf="@+id/frameLayout3"
+            android:focusable="true"
+            android:clickable="true"
+            app:layout_constraintEnd_toStartOf="@id/photoImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
@@ -31,42 +32,19 @@
                 android:id="@+id/logo_Meet_Kick"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
                 android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/layout_logo"
+                android:clickable="true"
+                android:contentDescription="@string/logo"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
                 app:layout_constraintEnd_toEndOf="@id/frameLayout2"
                 app:layout_constraintStart_toStartOf="@+id/frameLayout2"
                 app:layout_constraintTop_toTopOf="@+id/frameLayout2"
-                app:srcCompat="@drawable/meetkick_logo"
-                android:contentDescription="@string/logo" />
-        </FrameLayout>
-
-
-        <FrameLayout
-            android:id="@+id/frameLayout3"
-            android:layout_width="143dp"
-            android:layout_height="148dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/frameLayout2"
-            app:layout_constraintTop_toTopOf="parent">
-
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:civ_border_color="#32800F"
-                app:civ_border_width="4dp"
-                app:civ_shadow="true"
-                app:civ_shadow_color="#32800F"
-                app:civ_shadow_radius="7dp"
-                app:layout_constraintBottom_toBottomOf="@id/frameLayout3"
-                app:layout_constraintEnd_toEndOf="@id/frameLayout3"
-                app:layout_constraintStart_toStartOf="@id/frameLayout3"
-                app:layout_constraintTop_toTopOf="@id/frameLayout3"
-                app:srcCompat="@drawable/icona_profilo" />
+                app:srcCompat="@drawable/meetkick_logo" />
         </FrameLayout>
 
 
@@ -318,6 +296,7 @@
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -474,6 +453,25 @@
             app:fontFamily="@font/mclaren"
             app:layout_constraintTop_toBottomOf="@+id/già_registrato"
             tools:layout_editor_absoluteX="0dp" />
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/photoImageView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="profile_image"
+            android:clickable="true"
+            android:focusable="true"
+            app:civ_border_color="#32800F"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_color="#32800F"
+            app:civ_shadow_radius="7dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/frameLayout2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icona_profilo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
