@@ -98,27 +98,25 @@ class RegisterActivity : AppCompatActivity() {
             val password = userPassword.text.toString()
             val confermaPassword = userConfermaPassword.text.toString()
 
-            if( nome.isNotEmpty() && cognome.isNotEmpty() && telefono.isNotEmpty() && dataDiNascita.isNotEmpty() && sesso.isNotEmpty() && ruolo.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confermaPassword.isNotEmpty()) {
-
-            }
-            else{
+            if( nome.isNotEmpty() && cognome.isNotEmpty() && telefono.isNotEmpty() && dataDiNascita.isNotEmpty() && sesso.isNotEmpty() && ruolo.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confermaPassword.isNotEmpty() && password.length >= 8 && password == confermaPassword) {
+                // da rivedere
                 if(password.length < 8){
                     showMessage("La password deve contenere almeno 8 caratteri")
                     registrati.visibility = View.VISIBLE
                     loadingProgress.visibility = View.INVISIBLE
                 }
-                else {
+            }
+            else{
                     if(password != confermaPassword){
                         showMessage("Le due password inserite non coincidono")
                         registrati.visibility = View.VISIBLE
                         loadingProgress.visibility = View.INVISIBLE
                     }
-                    else{
+                    else {
                         showMessage("Ricontrolla di aver inserito tutti i campi")
                         registrati.visibility = View.VISIBLE
                         loadingProgress.visibility = View.INVISIBLE
                     }
-                }
             }
         })
 
