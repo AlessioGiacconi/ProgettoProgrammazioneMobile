@@ -27,6 +27,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.progettoprogrammazionemobile.R
+import com.example.progettoprogrammazionemobile.data_class.UserDataClass
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -36,9 +41,13 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var imgProfilePhoto: ImageView
     lateinit var pickedImage: Uri
     val PReqCode = 1
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+
+        auth = Firebase.auth
 
         val sesso = listOf("Maschio", "Femmina")
         val ruolo = listOf("Attaccante", "Difensore", "Portiere")
@@ -58,6 +67,8 @@ class RegisterActivity : AppCompatActivity() {
         val userCognome = findViewById<EditText>(R.id.et_cognome)
         val userTelefono = findViewById<EditText>(R.id.et_telefono)
         val userDataDiNascita = findViewById<EditText>(R.id.et_età)
+        val userSesso = autoCompleteSesso.onItemSelectedListener.toString()
+        val userRuolo = autoCompleteRuolo.onItemSelectedListener.toString()
         val userEmail = findViewById<EditText>(R.id.et_email)
         val userPassword = findViewById<EditText>(R.id.et_password)
         val userConfermaPassword = findViewById<EditText>(R.id.et_Conferma_password)
@@ -84,30 +95,38 @@ class RegisterActivity : AppCompatActivity() {
                 }
         })
 
+        val db = Firebase.firestore
 
         registrati.setOnClickListener(View.OnClickListener{
             registrati.visibility = View.INVISIBLE
             loadingProgress.visibility = View.INVISIBLE
-            val nome = userNome.text.toString()
-            val cognome = userCognome.text.toString()
-            val telefono = userTelefono.text.toString()
-            val sesso = autoCompleteSesso.onItemSelectedListener.toString()
-            val ruolo = autoCompleteRuolo.onItemSelectedListener.toString()
-            val email = userEmail.text.toString()
-            val dataDiNascita = userDataDiNascita.text.toString()
-            val password = userPassword.text.toString()
-            val confermaPassword = userConfermaPassword.text.toString()
 
-            if( nome.isNotEmpty() && cognome.isNotEmpty() && telefono.isNotEmpty() && dataDiNascita.isNotEmpty() && sesso.isNotEmpty() && ruolo.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confermaPassword.isNotEmpty() && password.length >= 8 && password == confermaPassword) {
-                // da rivedere
-                if(password.length < 8){
+            if( userNome.text.toString().isNotEmpty() && userCognome.text.toString().isNotEmpty() && userTelefono.text.toString().isNotEmpty() &&
+                userDataDiNascita.text.toString().isNotEmpty() && userSesso.isNotEmpty() && userRuolo.isNotEmpty() && userEmail.text.toString().isNotEmpty() &&
+                userPassword.text.toString().isNotEmpty() && userConfermaPassword.text.toString().isNotEmpty() && userPassword.text.toString().length >= 8
+                && userPassword.text.toString() == userConfermaPassword.text.toString()) {
+                if(userPassword.text.toString().length >= 8){
+                    val user = hashMapOf(
+                        "Nome" to userNome.text.toString(),
+                        "Cognome" to userCognome.text.toString(),
+                        "Telefono" to userTelefono.text.toString(),
+                        "Data di Nascita" to userDataDiNascita.text.toString(),
+                        "Sesso" to userSesso,
+                        "Ruolo" to userRuolo,
+                        "Email" to userEmail.text.toString(),
+                        "Password" to userPassword.text.toString()
+                    )
+                    CreateUserAccount(user)
+
+                }
+                else{
                     showMessage("La password deve contenere almeno 8 caratteri")
                     registrati.visibility = View.VISIBLE
                     loadingProgress.visibility = View.INVISIBLE
                 }
             }
             else{
-                    if(password != confermaPassword){
+                    if(userPassword.text.toString() != userConfermaPassword.text.toString()){
                         showMessage("Le due password inserite non coincidono")
                         registrati.visibility = View.VISIBLE
                         loadingProgress.visibility = View.INVISIBLE
@@ -124,6 +143,14 @@ class RegisterActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
+    }
+
+    private fun CreateUserAccount(user: HashMap<String, String>) {
+        auth.createUserWithEmailAndPassword(user["Email"].toString(), user["Password"].toString()).addOnCompleteListener{ task ->
+            if(task.isSuccessful){
+                showMessage("Account creato con successo")
+            }
+        }
     }
 
     private fun showMessage(messaggio: String) {
