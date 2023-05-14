@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
@@ -17,6 +18,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
@@ -38,41 +40,40 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
         val sesso = listOf("Maschio", "Femmina")
         val ruolo = listOf("Attaccante", "Difensore", "Portiere")
-
         val autoCompleteSesso : AutoCompleteTextView = findViewById(R.id.Autocomplete_text_view_sesso)
         val adapterSesso = ArrayAdapter(this, R.layout.dropdown_item, sesso)
         val autoCompleteRuolo : AutoCompleteTextView = findViewById(R.id.Autocomplete_text_view_ruolo)
         val adapterRuolo = ArrayAdapter(this, R.layout.dropdown_item, ruolo)
+        autoCompleteSesso.setAdapter(adapterSesso)
+        autoCompleteRuolo.setAdapter(adapterRuolo)
 
         val registrati = findViewById<Button>(R.id.register_btn)
         val tv_login = findViewById<TextView>(R.id.effettua_login)
+        val loadingProgress = findViewById<ProgressBar>(R.id.progressBar)
+        loadingProgress.visibility = View.INVISIBLE
 
-        val nome = findViewById<EditText>(R.id.et_nome)
-        val cognome = findViewById<EditText>(R.id.et_cognome)
-        val telefono = findViewById<EditText>(R.id.et_telefono)
-        val data_di_nascita = findViewById<EditText>(R.id.et_età)
-        val email = findViewById<EditText>(R.id.et_email)
-        val password = findViewById<EditText>(R.id.et_password)
-        val conferma_password = findViewById<EditText>(R.id.et_Conferma_password)
-
+        val userNome = findViewById<EditText>(R.id.et_nome)
+        val userCognome = findViewById<EditText>(R.id.et_cognome)
+        val userTelefono = findViewById<EditText>(R.id.et_telefono)
+        val userDataDiNascita = findViewById<EditText>(R.id.et_età)
+        val userEmail = findViewById<EditText>(R.id.et_email)
+        val userPassword = findViewById<EditText>(R.id.et_password)
+        val userConfermaPassword = findViewById<EditText>(R.id.et_Conferma_password)
         imgProfilePhoto = findViewById(R.id.photoImageView)
 
-        autoCompleteSesso.setAdapter(adapterSesso)
-        autoCompleteSesso.onItemClickListener = AdapterView.OnItemClickListener{
-                adapterView, view, i, l ->
+        //autoCompleteSesso.onItemClickListener = AdapterView.OnItemClickListener{
+        //        adapterView, view, i, l ->
 
-            val sessoSelezionato = adapterView.getItemAtPosition(i)
-        }
-        
-        autoCompleteRuolo.setAdapter(adapterRuolo)
-        autoCompleteRuolo.onItemClickListener = AdapterView.OnItemClickListener{
-            adapterView, view, i, l ->
+        //    val userSesso = adapterView.getItemAtPosition(i)
+        //}
 
-            val ruoloSelezionato = adapterView.getItemAtPosition(i)
-        }
+        //autoCompleteRuolo.onItemClickListener = AdapterView.OnItemClickListener{
+        //    adapterView, view, i, l ->
+
+        //    val userRuolo = adapterView.getItemAtPosition(i)
+        //}
 
         imgProfilePhoto.setOnClickListener(View.OnClickListener {
                 if (Build.VERSION.SDK_INT >= 22){
@@ -84,14 +85,51 @@ class RegisterActivity : AppCompatActivity() {
         })
 
 
-        registrati.setOnClickListener{
+        registrati.setOnClickListener(View.OnClickListener{
+            registrati.visibility = View.INVISIBLE
+            loadingProgress.visibility = View.INVISIBLE
+            val nome = userNome.text.toString()
+            val cognome = userCognome.text.toString()
+            val telefono = userTelefono.text.toString()
+            val sesso = autoCompleteSesso.onItemSelectedListener.toString()
+            val ruolo = autoCompleteRuolo.onItemSelectedListener.toString()
+            val email = userEmail.text.toString()
+            val dataDiNascita = userDataDiNascita.text.toString()
+            val password = userPassword.text.toString()
+            val confermaPassword = userConfermaPassword.text.toString()
 
-        }
+            if( nome.isNotEmpty() && cognome.isNotEmpty() && telefono.isNotEmpty() && dataDiNascita.isNotEmpty() && sesso.isNotEmpty() && ruolo.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confermaPassword.isNotEmpty()) {
+
+            }
+            else{
+                if(password.length < 8){
+                    showMessage("La password deve contenere almeno 8 caratteri")
+                    registrati.visibility = View.VISIBLE
+                    loadingProgress.visibility = View.INVISIBLE
+                }
+                else {
+                    if(password != confermaPassword){
+                        showMessage("Le due password inserite non coincidono")
+                        registrati.visibility = View.VISIBLE
+                        loadingProgress.visibility = View.INVISIBLE
+                    }
+                    else{
+                        showMessage("Ricontrolla di aver inserito tutti i campi")
+                        registrati.visibility = View.VISIBLE
+                        loadingProgress.visibility = View.INVISIBLE
+                    }
+                }
+            }
+        })
 
         tv_login.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
 
+    }
+
+    private fun showMessage(messaggio: String) {
+        Toast.makeText(this, messaggio, Toast.LENGTH_LONG).show()
     }
 
     private fun checkAndRequestForPermission(){
@@ -132,7 +170,7 @@ class RegisterActivity : AppCompatActivity() {
                 if (data != null) {
                     pickedImage = data.getData()!!
                 }
-                imgProfilePhoto.setImageURI(selectedImage) // To display selected image in image view
+                imgProfilePhoto.setImageURI(selectedImage)
 
             }
         }
