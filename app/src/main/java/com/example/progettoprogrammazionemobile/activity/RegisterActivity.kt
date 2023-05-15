@@ -8,31 +8,24 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Message
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
-import com.example.progettoprogrammazionemobile.data_class.UserDataClass
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -108,7 +101,7 @@ class RegisterActivity : AppCompatActivity() {
 
         registrati.setOnClickListener(View.OnClickListener{
             registrati.visibility = View.INVISIBLE
-            loadingProgress.visibility = View.INVISIBLE
+            loadingProgress.visibility = View.VISIBLE
 
             if( userNome.text.toString().isNotEmpty() && userCognome.text.toString().isNotEmpty() && userTelefono.text.toString().isNotEmpty() &&
                 userDataDiNascita.text.toString().isNotEmpty() && userSesso.isNotEmpty() && userRuolo.isNotEmpty() && userEmail.text.toString().isNotEmpty() &&
@@ -128,12 +121,12 @@ class RegisterActivity : AppCompatActivity() {
                     registrati.visibility = View.VISIBLE
                     loadingProgress.visibility = View.INVISIBLE
                 } else {
-                    if(userPassword.text.toString().length >= 8){
+                    if(userPassword.text.toString().length < 8){
                         showMessage("Password deve contenere almeno 8 caratteri")
                         registrati.visibility = View.VISIBLE
                         loadingProgress.visibility = View.INVISIBLE
                     } else {
-                        showMessage("Le due passowrd non coincidono, riprova")
+                        showMessage("Le due password non coincidono, riprova")
                         registrati.visibility = View.VISIBLE
                         loadingProgress.visibility = View.INVISIBLE
                     }
@@ -155,20 +148,33 @@ class RegisterActivity : AppCompatActivity() {
     private fun createUserAccount(user: HashMap<String, String>) {
         auth.createUserWithEmailAndPassword(user["Email"].toString(), user["Password"].toString()).addOnCompleteListener{ task ->
             if(task.isSuccessful){
-                showMessage("Account creato con successo")
-                updateUserInfo(user, pickedImage, auth.currentUser)
+                if(pickedImage != Uri.EMPTY){
+                    updateUserInfo(user, pickedImage, auth.currentUser)
+                } else {
+                    db.collection("users").document(user["Email"].toString()).set(user)
+                        .addOnSuccessListener {
+                            showMessage("Account creato con successo")
+                        }.addOnFailureListener {
+                        showMessage("Errore di comunicazione con il database, riprova")
+                    }
+                }
+            }else {
+                showMessage("Qualcosa è andato storto")
             }
         }
     }
 
     private fun updateUserInfo(user: HashMap<String, String>, pickedImage: Uri, currentUser: FirebaseUser?) {
-        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/")
+
+        val email = user["Email"].toString()
+        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$email")
+
         val imageFilePath = pickedImage.lastPathSegment?.let { storageReference.child(it) }
         imageFilePath?.putFile(pickedImage)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot>{
             imageFilePath.downloadUrl.addOnSuccessListener(OnSuccessListener<Uri>{ uri ->
                 val profileUpdate = UserProfileChangeRequest.Builder().setDisplayName(user["Email"].toString()).setPhotoUri(uri).build()
                 user["Immagine Profilo"] = uri.toString()
-                db.collection("users").add(user).addOnFailureListener{
+                db.collection("users").document(user["Email"].toString()).set(user).addOnFailureListener{
                     showMessage("Errore di comunicazione con il database, riprova")
                 }
                 currentUser?.updateProfile(profileUpdate)?.addOnCompleteListener(OnCompleteListener<Void>{ task->
@@ -215,7 +221,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun openGallery() {
         val photoPickerIntent =  Intent(Intent.ACTION_GET_CONTENT)
-        photoPickerIntent.type = "image/"
+        photoPickerIntent.type = "image/*"
         pickPhotoActivityResultLauncher.launch(photoPickerIntent)
     }
 
