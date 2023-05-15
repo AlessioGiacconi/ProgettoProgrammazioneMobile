@@ -76,24 +76,24 @@ class RegisterActivity : AppCompatActivity() {
         val userCognome = findViewById<EditText>(R.id.et_cognome)
         val userTelefono = findViewById<EditText>(R.id.et_telefono)
         val userDataDiNascita = findViewById<EditText>(R.id.et_età)
-        val userSesso = autoCompleteSesso.onItemSelectedListener.toString()
-        val userRuolo = autoCompleteRuolo.onItemSelectedListener.toString()
+        var userSesso = "Maschio"
+        var userRuolo = "Attaccante"
         val userEmail = findViewById<EditText>(R.id.et_email)
         val userPassword = findViewById<EditText>(R.id.et_password)
         val userConfermaPassword = findViewById<EditText>(R.id.et_Conferma_password)
         imgProfilePhoto = findViewById(R.id.photoImageView)
 
-        //autoCompleteSesso.onItemClickListener = AdapterView.OnItemClickListener{
-        //        adapterView, view, i, l ->
+        autoCompleteSesso.onItemClickListener = AdapterView.OnItemClickListener{
+                adapterView, _, i, _ ->
 
-        //    val userSesso = adapterView.getItemAtPosition(i)
-        //}
+              userSesso = adapterView.getItemAtPosition(i) as String
+        }
 
-        //autoCompleteRuolo.onItemClickListener = AdapterView.OnItemClickListener{
-        //    adapterView, view, i, l ->
+        autoCompleteRuolo.onItemClickListener = AdapterView.OnItemClickListener{
+            adapterView, view, i, l ->
 
-        //    val userRuolo = adapterView.getItemAtPosition(i)
-        //}
+             userRuolo = adapterView.getItemAtPosition(i) as String
+        }
 
         imgProfilePhoto.setOnClickListener(View.OnClickListener {
                 if (Build.VERSION.SDK_INT >= 22){
