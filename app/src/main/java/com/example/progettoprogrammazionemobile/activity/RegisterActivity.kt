@@ -113,7 +113,7 @@ class RegisterActivity : AppCompatActivity() {
                         "Email" to userEmail.text.toString(),
                         "Password" to userPassword.text.toString()
                     )
-                    Log.d("RegisterActiviy", "Email:" + userEmail.text.toString())
+                    Log.d("RegisterActivity", "Email:" + userEmail.text.toString())
                     Log.d("RegisterActivity", "Password: " + userPassword.text.toString())
                     createUserAccount(user)
                     registrati.visibility = View.INVISIBLE
@@ -175,8 +175,6 @@ class RegisterActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
 
     private fun saveUserToFirebaseDatabase(user: HashMap<String, String>) {
@@ -203,7 +201,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun checkAndRequestForPermission(){
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)){
-                Toast.makeText(this, "È necessario accettare i permessi per continuare", Toast.LENGTH_SHORT).show()
+                showMessage("È necessario accettare i permessi per continuare")
             }
             else{
                 ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),PReqCode)

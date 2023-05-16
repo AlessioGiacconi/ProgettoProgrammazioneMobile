@@ -40,10 +40,10 @@
                 android:clickable="true"
                 android:contentDescription="@string/logo"
                 android:focusable="true"
-                app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
+                app:layout_constraintBottom_toBottomOf="@id/frameLayout2"
                 app:layout_constraintEnd_toEndOf="@id/frameLayout2"
-                app:layout_constraintStart_toStartOf="@+id/frameLayout2"
-                app:layout_constraintTop_toTopOf="@+id/frameLayout2"
+                app:layout_constraintStart_toStartOf="@id/frameLayout2"
+                app:layout_constraintTop_toTopOf="@id/frameLayout2"
                 app:srcCompat="@drawable/meetkick_logo" />
         </FrameLayout>
 
@@ -114,7 +114,7 @@
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="@+id/layout_nome"
+                    app:layout_constraintStart_toStartOf="@id/layout_nome"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </LinearLayout>
 
@@ -146,7 +146,7 @@
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:textColor="#000000"
-                    app:layout_constraintStart_toStartOf="@+id/layout_cognome"
+                    app:layout_constraintStart_toStartOf="@id/layout_cognome"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
