@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -24,16 +25,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 import java.io.FileNotFoundException
 import java.io.InputStream
 
@@ -41,7 +37,7 @@ import java.io.InputStream
 class RegisterActivity : AppCompatActivity() {
 
     lateinit var imgProfilePhoto: ImageView
-    lateinit var pickedImage: Uri
+    var pickedImage: Uri? = null
     val PReqCode = 1
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
@@ -117,9 +113,11 @@ class RegisterActivity : AppCompatActivity() {
                         "Email" to userEmail.text.toString(),
                         "Password" to userPassword.text.toString()
                     )
+                    Log.d("RegisterActiviy", "Email:" + userEmail.text.toString())
+                    Log.d("RegisterActivity", "Password: " + userPassword.text.toString())
                     createUserAccount(user)
-                    registrati.visibility = View.VISIBLE
-                    loadingProgress.visibility = View.INVISIBLE
+                    registrati.visibility = View.INVISIBLE
+                    loadingProgress.visibility = View.VISIBLE
                 } else {
                     if(userPassword.text.toString().length < 8){
                         showMessage("Password deve contenere almeno 8 caratteri")
@@ -148,52 +146,50 @@ class RegisterActivity : AppCompatActivity() {
     private fun createUserAccount(user: HashMap<String, String>) {
         auth.createUserWithEmailAndPassword(user["Email"].toString(), user["Password"].toString()).addOnCompleteListener{ task ->
             if(task.isSuccessful){
-                if(pickedImage != Uri.EMPTY){
-                    updateUserInfo(user, pickedImage, auth.currentUser)
-                } else {
-                    db.collection("users").document(user["Email"].toString()).set(user)
-                        .addOnSuccessListener {
-                            showMessage("Account creato con successo")
-                        }.addOnFailureListener {
-                        showMessage("Errore di comunicazione con il database, riprova")
-                    }
-                }
-            }else {
-                showMessage("Qualcosa è andato storto")
+                Log.d("RegisterActivity", "Succesfully created user with uid: ${task.result.user?.uid}")
+                uploadImageToFirebaseStorage(user)
             }
         }
     }
 
-    private fun updateUserInfo(user: HashMap<String, String>, pickedImage: Uri, currentUser: FirebaseUser?) {
+    private fun uploadImageToFirebaseStorage(user: HashMap<String, String>) {
+        Log.d("RegisterActivity", "Sono nella funzione, pickedImageUri: $pickedImage")
+        if(pickedImage == null) {
+            user["Immagine Profilo"] = " "
+            Log.d("RegisterActivity", "User hash map:$user")
+            saveUserToFirebaseDatabase(user)
+        }
+        else {
+            val email = user["Email"].toString()
+            val storageReference = FirebaseStorage.getInstance().getReference("/profileImages/$email")
 
-        val email = user["Email"].toString()
-        val storageReference = FirebaseStorage.getInstance().getReference("profileImages/$email")
+            storageReference.putFile(pickedImage!!).addOnSuccessListener {
+                Log.d("RegisterActivity", "Image succesfully in storage: ${it.metadata?.path}")
 
-        val imageFilePath = pickedImage.lastPathSegment?.let { storageReference.child(it) }
-        imageFilePath?.putFile(pickedImage)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot>{
-            imageFilePath.downloadUrl.addOnSuccessListener(OnSuccessListener<Uri>{ uri ->
-                val profileUpdate = UserProfileChangeRequest.Builder().setDisplayName(user["Email"].toString()).setPhotoUri(uri).build()
-                user["Immagine Profilo"] = uri.toString()
-                db.collection("users").document(user["Email"].toString()).set(user).addOnFailureListener{
-                    showMessage("Errore di comunicazione con il database, riprova")
+                storageReference.downloadUrl.addOnSuccessListener { it->
+                    it.toString()
+                    Log.d("RegisterActivity", "File Location:$it")
+                    user["Immagine Profilo"] = it.toString()
+                    Log.d("RegisterActivity", "User hash map:$user")
+                    saveUserToFirebaseDatabase(user)
                 }
-                currentUser?.updateProfile(profileUpdate)?.addOnCompleteListener(OnCompleteListener<Void>{ task->
-                    if (task.isSuccessful){
-                        showMessage("Registrazione completata!")
-                        updateUI()
-                    }
-                    else{
-                        showMessage("Campi non validi")
-                    }
-
-                })
-            })
-        })
-
+            }
+        }
 
 
     }
 
+    private fun saveUserToFirebaseDatabase(user: HashMap<String, String>) {
+        Log.d("RegisterActivity", "Sono qui")
+        db.collection("users").document(user["Email"].toString()).set(user).addOnSuccessListener {
+            Log.d("RegisterActivity", "Utente registrato sul db")
+            showMessage("Registrazione completata")
+            updateUI()
+        }.addOnFailureListener {
+            showMessage("Qualcosa è andato storto durante la registrazione")
+            Log.d("RegisterActivity", "Qualcosa è andato storto")
+        }
+    }
     private fun updateUI(){
         val mainActivity = Intent(this, MainActivity::class.java)
         startActivity(mainActivity)
@@ -220,7 +216,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun openGallery() {
-        val photoPickerIntent =  Intent(Intent.ACTION_GET_CONTENT)
+        val photoPickerIntent =  Intent(Intent.ACTION_PICK)
         photoPickerIntent.type = "image/*"
         pickPhotoActivityResultLauncher.launch(photoPickerIntent)
     }
@@ -229,6 +225,7 @@ class RegisterActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
+                Log.d("RegisterActivity", "Photo was selected")
 
                 val data = result.data
                 val selectedImage: Uri? = data?.data
@@ -239,9 +236,7 @@ class RegisterActivity : AppCompatActivity() {
                     e.printStackTrace()
                 }
                 BitmapFactory.decodeStream(imageStream)
-                if (data != null) {
-                    pickedImage = data.getData()!!
-                }
+                pickedImage = data?.data
                 imgProfilePhoto.setImageURI(selectedImage)
 
             }

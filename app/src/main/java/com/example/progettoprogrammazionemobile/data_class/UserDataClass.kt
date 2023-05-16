@@ -6,9 +6,10 @@ data class UserDataClass(
     val nome: String,
     val cognome: String,
     val telefono: String,
+    val data_di_nascita: String,
     val sesso: String,
-    val età: Int,
+    val ruolo: String,
     val email: String,
     val password: String,
-    val profile_img: Uri
+    val profile_img: String
 )
