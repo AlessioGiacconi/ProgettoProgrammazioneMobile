@@ -22,7 +22,6 @@
             android:id="@+id/stadio_sfondo"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_ToptoBottomOf="@id/imageView3"
             android:background="@drawable/stadio_sfondo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"
