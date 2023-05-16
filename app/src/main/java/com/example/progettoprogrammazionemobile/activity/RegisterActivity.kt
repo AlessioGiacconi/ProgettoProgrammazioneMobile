@@ -38,7 +38,7 @@ class RegisterActivity : AppCompatActivity() {
 
     lateinit var imgProfilePhoto: ImageView
     var pickedImage: Uri? = null
-    val PReqCode = 1
+    private val PReqCode = 1
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
