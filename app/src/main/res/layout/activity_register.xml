@@ -509,4 +509,5 @@
             app:srcCompat="@drawable/icona_profilo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
