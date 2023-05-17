@@ -19,11 +19,12 @@
         app:civ_shadow="true"
         app:civ_shadow_color="@color/white"
         app:civ_shadow_radius="7dp"
-        app:layout_constraintBottom_toTopOf="@id/guidline"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.31"
+        app:layout_constraintVertical_bias="0.3"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -34,31 +35,278 @@
         android:textSize="25sp"
         android:textColor="@color/white"
         android:fontFamily="@font/mclaren"
-        app:layout_constraintBottom_toTopOf="@+id/guidline"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidline"
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.30" />
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/contenitore_info"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:elevation="45dp"
+        android:background="@drawable/profile_rounded_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guidline"
-        android:contentDescription="info_profile"
-        android:background="@drawable/profile_rounded_layout">
+        app:layout_constraintTop_toBottomOf="@id/guideline">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="info_profile"
+            android:elevation="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_nome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/nome"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_nome"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="100dp"
+                        android:hint="@string/caricamento"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cognome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_cognome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/cognome"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_cognome"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="100dp"
+                        android:hint="@string/caricamento"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_telefono"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/telefono"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_telefono"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="100dp"
+                        android:hint="@string/caricamento"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ruolo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_ruolo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/ruolo"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_ruolo"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="100dp"
+                        android:hint="@string/caricamento"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sesso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_sesso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/sesso"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_sesso"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="100dp"
+                        android:hint="@string/caricamento"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/data_nascita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_data_nascita"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Nato il..."
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_data_nascita"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="100dp"
+                        android:hint="@string/caricamento"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="15dp">
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/email"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_email"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginStart="100dp"
+                        android:hint="@string/caricamento"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
 
 
-    </ScrollView>
+
+
+        </ScrollView>
+
+
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="31dp"
+            android:layout_marginBottom="30dp"
+            android:backgroundTint="@color/verde_mimetico"
+            android:fontFamily="@font/mclaren"
+            android:gravity="center"
+            android:src="@android:color/transparent"
+            android:text="@string/modifica_profilo"
+            android:textSize="15sp"
+            app:icon="@drawable/profile_icon">
+
+
+        </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+    </RelativeLayout>
 
 
 
