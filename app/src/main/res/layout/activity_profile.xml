@@ -19,7 +19,7 @@
         app:civ_shadow="true"
         app:civ_shadow_color="@color/white"
         app:civ_shadow_radius="7dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
