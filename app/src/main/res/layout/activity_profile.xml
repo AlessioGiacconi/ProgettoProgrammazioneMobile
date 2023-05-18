@@ -54,20 +54,25 @@
         android:background="@drawable/profile_rounded_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline">
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintVertical_bias="0.0">
 
         <ScrollView
+            android:id="@+id/info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="517dp"
             android:contentDescription="info_profile"
             android:elevation="45dp"
+            android:layout_marginTop="5dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fab">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -75,8 +80,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/layout_form"
                     android:padding="15dp">
 
@@ -93,10 +98,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_nome"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="100dp"
-                        android:hint="@string/caricamento"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -105,8 +110,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/layout_form"
                     android:padding="15dp">
 
@@ -123,10 +128,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_cognome"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="100dp"
-                        android:hint="@string/caricamento"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -135,8 +140,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/layout_form"
                     android:padding="15dp">
 
@@ -153,10 +158,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_telefono"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="100dp"
-                        android:hint="@string/caricamento"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -165,8 +170,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/layout_form"
                     android:padding="15dp">
 
@@ -183,10 +188,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_ruolo"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="100dp"
-                        android:hint="@string/caricamento"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -195,8 +200,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/layout_form"
                     android:padding="15dp">
 
@@ -213,10 +218,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_sesso"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="100dp"
-                        android:hint="@string/caricamento"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -225,8 +230,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/layout_form"
                     android:padding="15dp">
 
@@ -243,10 +248,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_data_nascita"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="100dp"
-                        android:hint="@string/caricamento"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
                         android:textSize="18sp" />
                 </RelativeLayout>
 
@@ -255,8 +260,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/layout_form"
                     android:padding="15dp">
 
@@ -273,41 +278,37 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_email"
-                        android:layout_marginTop="2dp"
                         android:layout_marginStart="100dp"
-                        android:hint="@string/caricamento"
+                        android:layout_marginTop="2dp"
                         android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
                         android:textSize="18sp" />
                 </RelativeLayout>
-
             </LinearLayout>
-
-
-
-
         </ScrollView>
 
-
-
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/fab"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/info"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="31dp"
-            android:layout_marginBottom="30dp"
-            android:backgroundTint="@color/verde_mimetico"
-            android:fontFamily="@font/mclaren"
-            android:gravity="center"
-            android:src="@android:color/transparent"
-            android:text="@string/modifica_profilo"
-            android:textSize="15sp"
-            app:icon="@drawable/profile_icon">
+            android:gravity="center|bottom"
+            android:orientation="horizontal">
 
-
-        </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/edit_btn"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/verde_mimetico"
+                android:fontFamily="@font/mclaren"
+                android:gravity="center"
+                android:src="@android:color/transparent"
+                android:text="@string/modifica_profilo"
+                android:textSize="15sp"
+                app:icon="@drawable/profile_icon">
+            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+        </LinearLayout>
     </RelativeLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

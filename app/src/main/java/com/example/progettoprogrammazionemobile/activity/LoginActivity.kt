@@ -30,20 +30,25 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.password)
 
         login_btn.setOnClickListener{
-            auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString()).addOnCompleteListener(this){ task ->
-                 if (task.isSuccessful){
-                     Log.d("LoginActivity", "accesso  eseguito")
-                     updateUI()
-                 } else {
-                     Log.w("LoginActivity", "accesso fallito", task.exception)
-                     Toast.makeText(this, "Autenticazione fallita, riprova", Toast.LENGTH_SHORT).show()
-                 }
+            if(email.text.toString().isEmpty() || password.text.toString().isEmpty()){
+                Toast.makeText(this, "Inserire le credenziali", Toast.LENGTH_SHORT).show()
+            }else{
+                auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString()).addOnCompleteListener(this){ task ->
+                    if (task.isSuccessful){
+                        Log.d("LoginActivity", "accesso  eseguito")
+                        updateUI()
+                    } else {
+                        Log.w("LoginActivity", "accesso fallito", task.exception)
+                        Toast.makeText(this, "Autenticazione fallita, riprova", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
+
         }
 
 
         tv_register.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
