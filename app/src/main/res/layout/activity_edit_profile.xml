@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".activity.EditProfileActivity">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/imageView"
+        android:layout_width="180dp"
+        android:layout_height="169dp"
+        android:clickable="true"
+        android:contentDescription="profile_image"
+        android:focusable="true"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="4dp"
+        app:civ_shadow="true"
+        app:civ_shadow_color="@color/white"
+        app:civ_shadow_radius="7dp"
+        app:layout_constraintBottom_toTopOf="@id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        tools:srcCompat="@tools:sample/avatars"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Procedi con le modifiche"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/mclaren"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        tools:ignore="HardcodedText" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <RelativeLayout
+        android:id="@+id/contenitore_info"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/profile_rounded_layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <ScrollView
+            android:id="@+id/edit_info"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:contentDescription="modifica_info"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            app:layout_constraintBottom_toTopOf="@id/edit_fab"
+            tools:ignore="HardcodedText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_nome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/nome"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_nome"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_nome"
+                        android:layout_marginStart="110dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="Caricamento..."
+                        android:inputType="text"
+                        android:textSize="19sp"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/cognome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_cognome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/cognome"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_cognome"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_cognome"
+                        android:hint="Caricamento..."
+                        android:inputType="text"
+                        android:layout_marginStart="110dp"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="19sp"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/telefono"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_telefono"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/telefono"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_telefono"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_telefono"
+                        android:hint="Caricamento..."
+                        android:inputType="text"
+                        android:layout_marginStart="110dp"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="19sp"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ruolo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_ruolo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/ruolo"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_edit_ruolo"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="488dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignStart="@+id/tv_ruolo"
+                        android:layout_marginStart="110dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/Autocomplete_edit_ruolo"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:fontFamily="@font/mclaren"
+                            android:inputType="text"
+                            android:textSize="19sp"
+                            android:hint="Caricamento..." />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/sesso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_sesso"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="15dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/sesso"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/et_edit_sesso"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                        android:layout_width="488dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignStart="@+id/tv_sesso"
+                        android:layout_marginStart="110dp">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/Autocomplete_edit_sesso"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:fontFamily="@font/mclaren"
+                            android:inputType="text"
+                            android:textSize="19sp"
+                            android:hint="Caricamento..." />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/data_di_nascita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_data_di_nascita"
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/data_di_nascita"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_data_di_nascita"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_data_di_nascita"
+                        android:layout_marginStart="110dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="--/--/----"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="datetime|date"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/email"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_email"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_email"
+                        android:hint="Caricamento..."
+                        android:inputType="textEmailAddress"
+                        android:layout_marginStart="110dp"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="19sp"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_password"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/password"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_password"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_password"
+                        android:hint="Caricamento..."
+                        android:inputType="textPassword"
+                        android:layout_marginStart="110dp"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="19sp"
+                        />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/conferma_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_conferma_password"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="@string/conferma_password"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_conferma_password"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_conferma_password"
+                        android:hint="Caricamento..."
+                        android:inputType="textPassword"
+                        android:layout_marginStart="110dp"
+                        android:fontFamily="@font/mclaren"
+                        android:textSize="19sp"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/edit_fab"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:layout_below="@+id/edit_info"
+            android:elevation="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center|bottom"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/confirm_btn"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/verde_mimetico"
+                android:fontFamily="@font/mclaren"
+                android:gravity="center"
+                android:src="@android:color/transparent"
+                android:text="@string/conferma_modifica"
+                android:textSize="15sp"
+                app:icon="@drawable/profile_icon">
+            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

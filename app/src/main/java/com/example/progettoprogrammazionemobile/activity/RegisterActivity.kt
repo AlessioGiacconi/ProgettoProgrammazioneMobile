@@ -155,7 +155,7 @@ class RegisterActivity : AppCompatActivity() {
     private fun uploadImageToFirebaseStorage(user: HashMap<String, String>) {
         Log.d("RegisterActivity", "Sono nella funzione, pickedImageUri: $pickedImage")
         if(pickedImage == null) {
-            user["Immagine Profilo"] = " "
+            user["Immagine Profilo"] = ""
             Log.d("RegisterActivity", "User hash map:$user")
             saveUserToFirebaseDatabase(user)
         }

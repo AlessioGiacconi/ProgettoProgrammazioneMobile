@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         tv_register.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
+            startActivity(Intent(this, EditProfileActivity::class.java))
         }
     }
 

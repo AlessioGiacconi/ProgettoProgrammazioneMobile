@@ -62,12 +62,14 @@
         <ScrollView
             android:id="@+id/info"
             android:layout_width="match_parent"
-            android:layout_height="517dp"
+            android:layout_height="500dp"
             android:contentDescription="info_profile"
-            android:elevation="45dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
             app:layout_constraintBottom_toTopOf="@id/fab">
 
             <LinearLayout
@@ -292,7 +294,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/info"
+            android:elevation="45dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
             android:gravity="center|bottom"
             android:orientation="horizontal">
 
