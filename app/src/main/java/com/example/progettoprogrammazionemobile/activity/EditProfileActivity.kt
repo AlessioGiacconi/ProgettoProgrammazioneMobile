@@ -13,7 +13,7 @@ import java.util.Locale
 class EditProfileActivity : AppCompatActivity() {
 
     lateinit var dateEdit : EditText
-    var cal = Calendar.getInstance()
+    private var cal = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

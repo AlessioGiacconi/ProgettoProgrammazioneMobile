@@ -1,7 +1,5 @@
 package com.example.progettoprogrammazionemobile.data_class
 
-import android.net.Uri
-
 data class UserDataClass(
     val nome: String,
     val cognome: String,
