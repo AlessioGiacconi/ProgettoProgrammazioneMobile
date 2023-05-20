@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="tè_verde">#EAFFDD</color>
     <color name="verde_mimetico">#9FCF72</color>
+    <color name="grey">#808080</color>
 </resources>

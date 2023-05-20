@@ -4,6 +4,203 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".activity.CreateEventActivity">
 
+    <TextView
+        android:id="@+id/crea_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Crea il tuo evento"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/mclaren"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/crea_evento_layout_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/crea_evento">
+
+        <ScrollView
+            android:id="@+id/sv_new_event"
+            android:layout_width="match_parent"
+            android:layout_height="536dp"
+            android:contentDescription="modifica_info"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            app:layout_constraintBottom_toTopOf="@id/ll_confirm"
+            tools:ignore="HardcodedText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Data"
+                        android:textColor="@color/black"
+                        android:textSize="19sp"/>
+
+                    <EditText
+                        android:id="@+id/et_data"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_data"
+                        android:layout_marginStart="120dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="--/--/----"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:inputType="datetime|date"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ora"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_ora"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Ora"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_ora"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_ora"
+                        android:layout_marginStart="120dp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="--:--"
+                        android:inputType="datetime|time"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ruoli_cercati"
+                    android:layout_width="match_parent"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_ruoli_cercati"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="7dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Cerchiamo"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <TextView
+                        android:id="@+id/multiselect_ruoli"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_ruoli_cercati"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="Seleziona i ruoli"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        app:drawableEndCompat="@drawable/baseline_arrow_drop_down_24" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/ll_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_below="@+id/sv_new_event"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:elevation="45dp"
+            android:gravity="center|bottom"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/confirm_btn"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/verde_mimetico"
+                android:fontFamily="@font/mclaren"
+                android:gravity="center"
+                android:src="@android:color/transparent"
+                android:text="@string/conferma_modifica"
+                android:textSize="15sp"
+                app:icon="@drawable/calendar_icon">
+            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+        </LinearLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
