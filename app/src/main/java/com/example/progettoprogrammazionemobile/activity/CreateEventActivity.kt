@@ -6,10 +6,15 @@ import android.app.TimePickerDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.InputType
+import android.text.method.ScrollingMovementMethod
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.view.LayoutInflaterCompat
 import com.example.progettoprogrammazionemobile.R
+import com.google.android.material.slider.Slider
 import java.text.SimpleDateFormat
 import java.util.Arrays
 import java.util.Calendar
@@ -21,6 +26,8 @@ class CreateEventActivity : AppCompatActivity() {
     lateinit var scegliOra : EditText
     private var cal = Calendar.getInstance()
     lateinit var scegliRuoli: TextView
+    lateinit var numeroGiocatori: Slider
+    lateinit var descrizione : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
@@ -28,6 +35,8 @@ class CreateEventActivity : AppCompatActivity() {
         scegliOra = findViewById(R.id.et_ora)
         scegliData = findViewById(R.id.et_data)
         scegliRuoli = findViewById(R.id.multiselect_ruoli)
+        numeroGiocatori = findViewById(R.id.slider_giocatori)
+        descrizione = findViewById(R.id.tv_descrizione)
 
         val mTimePicker: TimePickerDialog
         val mcurrentTime = Calendar.getInstance()
@@ -62,30 +71,51 @@ class CreateEventActivity : AppCompatActivity() {
         scegliRuoli.setOnClickListener{
 
             scegliRuoli.text = ""
-            val builder = AlertDialog.Builder(this)
-            builder.setTitle("Scegli i ruoli")
-            builder.setMultiChoiceItems(listRoles, checkedRoles){ dialog, which, isChecked ->
+            val builderRuoli = AlertDialog.Builder(this)
+            builderRuoli.setTitle("Scegli i ruoli")
+            builderRuoli.setMultiChoiceItems(listRoles, checkedRoles){ dialog, which, isChecked ->
                 checkedRoles[which] = isChecked
                 val currentRole = selectedRoles[which]
             }
 
-            builder.setCancelable(false)
-            builder.setPositiveButton("FATTO"){ dialog, which ->
+            builderRuoli.setCancelable(false)
+            builderRuoli.setPositiveButton("FATTO"){ dialog, which ->
                 for (i in checkedRoles.indices){
                     if (checkedRoles[i]){
                         scegliRuoli.text = String.format("%s%s ", scegliRuoli.text, selectedRoles[i])
                     }
                 }
             }
-            builder.setNegativeButton("INDIETRO"){dialog, which ->}
-            builder.setNeutralButton("CANCELLA"){ dialog: DialogInterface?, which: Int ->
+            builderRuoli.setNegativeButton("INDIETRO"){dialog, which ->}
+            builderRuoli.setNeutralButton("CANCELLA"){ dialog: DialogInterface?, which: Int ->
                 Arrays.fill(checkedRoles, false)
             }
-            builder.create()
-            val alertDialog = builder.create()
+            builderRuoli.create()
+            val alertDialog = builderRuoli.create()
             alertDialog.show()
 
         }
+
+        // eventuali listener per lo slider del numero giocatori
+
+        numeroGiocatori.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: Slider) {
+                // Responds to when slider's touch event is being started
+            }
+
+            override fun onStopTrackingTouch(slider: Slider) {
+                // Responds to when slider's touch event is being stopped
+            }
+        })
+
+        numeroGiocatori.addOnChangeListener { slider, value, fromUser ->
+            // Responds to when slider's value is changed
+        }
+
+        // blocco che gestisce il dialog della descrizione
+
+
+        descrizione.movementMethod = ScrollingMovementMethod()
 
     }
 
