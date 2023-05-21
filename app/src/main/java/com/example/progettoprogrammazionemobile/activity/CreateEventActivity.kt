@@ -6,13 +6,10 @@ import android.app.TimePickerDialog
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.InputType
 import android.text.method.ScrollingMovementMethod
-import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
-import androidx.core.view.LayoutInflaterCompat
 import com.example.progettoprogrammazionemobile.R
 import com.google.android.material.slider.Slider
 import java.text.SimpleDateFormat
@@ -37,6 +34,8 @@ class CreateEventActivity : AppCompatActivity() {
         scegliRuoli = findViewById(R.id.multiselect_ruoli)
         numeroGiocatori = findViewById(R.id.slider_giocatori)
         descrizione = findViewById(R.id.tv_descrizione)
+
+        descrizione.movementMethod = ScrollingMovementMethod()
 
         val mTimePicker: TimePickerDialog
         val mcurrentTime = Calendar.getInstance()
@@ -112,10 +111,7 @@ class CreateEventActivity : AppCompatActivity() {
             // Responds to when slider's value is changed
         }
 
-        // blocco che gestisce il dialog della descrizione
 
-
-        descrizione.movementMethod = ScrollingMovementMethod()
 
     }
 

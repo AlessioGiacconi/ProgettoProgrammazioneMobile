@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ProfileActivity"
-    android:background="@drawable/background">
+    android:background="@drawable/background"
+    tools:context=".activity.ProfileActivity">
 
     <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/imageView"
@@ -31,10 +31,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ecco le tue informazioni"
-        android:textSize="25sp"
-        android:textColor="@color/white"
         android:fontFamily="@font/mclaren"
+        android:text="Ecco le tue informazioni"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +63,14 @@
             android:id="@+id/info"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:contentDescription="info_profile"
+            android:layout_above="@id/fab"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
+            android:contentDescription="info_profile"
             app:layout_constraintBottom_toTopOf="@id/fab">
 
             <LinearLayout
@@ -293,15 +294,14 @@
             android:id="@+id/fab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/info"
-            android:elevation="45dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="20dp"
+            android:elevation="45dp"
             android:gravity="center|bottom"
             android:orientation="horizontal">
 
@@ -316,8 +316,7 @@
                 android:src="@android:color/transparent"
                 android:text="@string/modifica_profilo"
                 android:textSize="15sp"
-                app:icon="@drawable/profile_icon">
-            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+                app:icon="@drawable/profile_icon"></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

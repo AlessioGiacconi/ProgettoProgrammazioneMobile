@@ -25,17 +25,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3"
-        tools:srcCompat="@tools:sample/avatars"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Procedi con le modifiche"
-        android:textSize="25sp"
-        android:textColor="@color/white"
         android:fontFamily="@font/mclaren"
+        android:text="Procedi con le modifiche"
+        android:textColor="@color/white"
+        android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,13 +66,14 @@
             android:id="@+id/edit_info"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:contentDescription="modifica_info"
+            android:layout_above="@id/edit_fab"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
+            android:contentDescription="modifica_info"
             app:layout_constraintBottom_toTopOf="@id/edit_fab"
             tools:ignore="HardcodedText">
 
@@ -112,8 +113,7 @@
                         android:fontFamily="@font/mclaren"
                         android:hint="Caricamento..."
                         android:inputType="text"
-                        android:textSize="19sp"
-                        />
+                        android:textSize="19sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -143,12 +143,11 @@
                         android:layout_width="488dp"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_cognome"
-                        android:hint="Caricamento..."
-                        android:inputType="text"
                         android:layout_marginStart="110dp"
                         android:fontFamily="@font/mclaren"
-                        android:textSize="19sp"
-                        />
+                        android:hint="Caricamento..."
+                        android:inputType="text"
+                        android:textSize="19sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -178,12 +177,11 @@
                         android:layout_width="488dp"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_telefono"
-                        android:hint="Caricamento..."
-                        android:inputType="text"
                         android:layout_marginStart="110dp"
                         android:fontFamily="@font/mclaren"
-                        android:textSize="19sp"
-                        />
+                        android:hint="Caricamento..."
+                        android:inputType="text"
+                        android:textSize="19sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -221,9 +219,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:fontFamily="@font/mclaren"
+                            android:hint="Caricamento..."
                             android:inputType="text"
-                            android:textSize="19sp"
-                            android:hint="Caricamento..." />
+                            android:textSize="19sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -265,9 +263,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:fontFamily="@font/mclaren"
+                            android:hint="Caricamento..."
                             android:inputType="text"
-                            android:textSize="19sp"
-                            android:hint="Caricamento..." />
+                            android:textSize="19sp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </RelativeLayout>
@@ -299,12 +297,12 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_data_di_nascita"
                         android:layout_marginStart="110dp"
-                        android:fontFamily="@font/mclaren"
-                        android:hint="--/--/----"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="--/--/----"
                         android:inputType="datetime|date"
                         android:textColor="@color/black"
                         android:textSize="19sp" />
@@ -337,12 +335,11 @@
                         android:layout_width="488dp"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_email"
-                        android:hint="Caricamento..."
-                        android:inputType="textEmailAddress"
                         android:layout_marginStart="110dp"
                         android:fontFamily="@font/mclaren"
-                        android:textSize="19sp"
-                        />
+                        android:hint="Caricamento..."
+                        android:inputType="textEmailAddress"
+                        android:textSize="19sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -372,12 +369,11 @@
                         android:layout_width="488dp"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_password"
-                        android:hint="Caricamento..."
-                        android:inputType="textPassword"
                         android:layout_marginStart="110dp"
                         android:fontFamily="@font/mclaren"
-                        android:textSize="19sp"
-                        />
+                        android:hint="Caricamento..."
+                        android:inputType="textPassword"
+                        android:textSize="19sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -406,12 +402,11 @@
                         android:layout_width="488dp"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_conferma_password"
-                        android:hint="Caricamento..."
-                        android:inputType="textPassword"
                         android:layout_marginStart="110dp"
                         android:fontFamily="@font/mclaren"
-                        android:textSize="19sp"
-                        />
+                        android:hint="Caricamento..."
+                        android:inputType="textPassword"
+                        android:textSize="19sp" />
                 </RelativeLayout>
             </LinearLayout>
         </ScrollView>
@@ -420,8 +415,6 @@
             android:id="@+id/edit_fab"
             android:layout_width="match_parent"
             android:layout_height="93dp"
-            android:layout_below="@+id/edit_info"
-            android:elevation="45dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
@@ -429,6 +422,7 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
+            android:elevation="45dp"
             android:gravity="center|bottom"
             android:orientation="horizontal">
 
@@ -443,8 +437,7 @@
                 android:src="@android:color/transparent"
                 android:text="@string/conferma_modifica"
                 android:textSize="15sp"
-                app:icon="@drawable/profile_icon">
-            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+                app:icon="@drawable/profile_icon"></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
         </LinearLayout>
 
 

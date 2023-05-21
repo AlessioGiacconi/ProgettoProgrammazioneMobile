@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:layout_editor_absoluteX="372dp"
-    tools:layout_editor_absoluteY="150dp"
-    android:fillViewport="true">
+    tools:layout_editor_absoluteY="150dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -20,8 +19,8 @@
             android:layout_width="265dp"
             android:layout_height="148dp"
             android:layout_marginEnd="2dp"
-            android:focusable="true"
             android:clickable="true"
+            android:focusable="true"
             app:layout_constraintEnd_toStartOf="@id/photoImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -214,9 +213,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="25dp"
                         android:background="@drawable/layout_form"
+                        android:fontFamily="@font/mclaren"
                         android:inputType="text"
                         android:textSize="16sp"
-                        android:fontFamily="@font/mclaren"
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -305,8 +304,8 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
-            android:gravity="center"
             android:background="@drawable/layout_bg"
+            android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -419,9 +418,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/Conferma_Password"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/Conferma_Password">
 
                 <Button
                     android:id="@+id/register_btn"
@@ -436,10 +435,10 @@
                     android:text="@string/registrati"
                     app:backgroundTint="#4CAF50"
                     app:fontFamily="@font/mclaren"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     tools:ignore="TextContrastCheck" />
 
                 <ProgressBar
@@ -458,7 +457,6 @@
 
 
             </RelativeLayout>
-
 
 
         </LinearLayout>
@@ -494,8 +492,8 @@
             android:layout_height="130dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
-            android:contentDescription="profile_image"
             android:clickable="true"
+            android:contentDescription="profile_image"
             android:focusable="true"
             app:civ_border_color="#32800F"
             app:civ_border_width="4dp"

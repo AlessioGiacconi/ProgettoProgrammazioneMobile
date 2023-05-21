@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Crea il tuo evento"
-        android:textSize="30sp"
-        android:textColor="@color/white"
         android:fontFamily="@font/mclaren"
+        android:text="Crea il tuo evento"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +28,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/crea_evento_layout_bg"
+        android:background="@drawable/evento_layout_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,13 +38,14 @@
             android:id="@+id/sv_new_event"
             android:layout_width="match_parent"
             android:layout_height="536dp"
-            android:contentDescription="modifica_info"
+            android:layout_above="@id/ll_confirm"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
+            android:contentDescription="modifica_info"
             app:layout_constraintBottom_toTopOf="@id/ll_confirm"
             tools:ignore="HardcodedText">
 
@@ -73,7 +74,7 @@
                         android:fontFamily="@font/mclaren"
                         android:text="Data"
                         android:textColor="@color/black"
-                        android:textSize="19sp"/>
+                        android:textSize="19sp" />
 
                     <EditText
                         android:id="@+id/et_data"
@@ -81,16 +82,16 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_data"
                         android:layout_marginStart="120dp"
-                        android:fontFamily="@font/mclaren"
-                        android:hint="--/--/----"
                         android:clickable="false"
                         android:cursorVisible="false"
                         android:focusable="false"
                         android:focusableInTouchMode="false"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="--/--/----"
                         android:inputType="datetime|date"
                         android:textColor="@color/black"
                         android:textColorHint="@color/grey"
-                        android:textSize="19sp"/>
+                        android:textSize="19sp" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -128,6 +129,43 @@
                         android:fontFamily="@font/mclaren"
                         android:hint="--:--"
                         android:inputType="datetime|time"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/luogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_luogo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Dove"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_luogo"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_luogo"
+                        android:layout_marginStart="120dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="Esempio"
+                        android:inputType="text"
                         android:textColor="@color/black"
                         android:textColorHint="@color/grey"
                         android:textSize="19sp" />
@@ -199,14 +237,14 @@
                         android:layout_alignStart="@id/tv_numero_giocatori"
                         android:layout_marginStart="120dp"
                         android:contentDescription="slider numero giocatori"
+                        android:stepSize="1"
                         android:valueFrom="0"
                         android:valueTo="9"
-                        android:stepSize="1"
-                        app:thumbColor="@color/verde_scuro"
                         app:haloColor="@color/verde_mimetico"
-                        app:tickColorInactive="@color/verde_scuro"
-                        app:tickColorActive="@color/tè_verde"
+                        app:thumbColor="@color/verde_scuro"
                         app:thumbStrokeColor="@color/verde_mimetico"
+                        app:tickColorActive="@color/tè_verde"
+                        app:tickColorInactive="@color/verde_scuro"
                         app:trackColor="@color/verde_mimetico" />
                 </RelativeLayout>
 
@@ -214,10 +252,10 @@
                     android:id="@+id/descrizione"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_gravity="center"
                     android:background="@drawable/layout_form"
                     android:padding="10dp">
 
@@ -225,26 +263,26 @@
                         android:id="@+id/tv_descrizione"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:fontFamily="@font/mclaren"
+                        android:gravity="center"
                         android:text="Descrizione"
                         android:textColor="@color/black"
                         android:textSize="19sp" />
 
                     <EditText
                         android:id="@+id/et_descrizione"
-                        android:layout_width="488dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@id/tv_descrizione"
                         android:layout_marginTop="5dp"
+                        android:fontFamily="@font/mclaren"
                         android:hint="Inserisci una descrizione..."
                         android:inputType="textCapSentences|textMultiLine"
                         android:maxLength="400"
                         android:maxLines="6"
-                        android:fontFamily="@font/mclaren"
                         android:textColor="@color/black"
                         android:textColorHint="@color/grey"
                         android:textSize="19sp" />
@@ -256,14 +294,11 @@
             android:id="@+id/ll_confirm"
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:layout_below="@+id/sv_new_event"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:elevation="45dp"
             android:gravity="center|bottom"
             android:orientation="horizontal">
@@ -279,8 +314,7 @@
                 android:src="@android:color/transparent"
                 android:text="@string/conferma_modifica"
                 android:textSize="15sp"
-                app:icon="@drawable/calendar_icon">
-            </com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+                app:icon="@drawable/calendar_icon"></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
