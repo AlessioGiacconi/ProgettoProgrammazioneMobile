@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProgettoProgrammazioneMobile">
         <activity
+            android:name=".activity.SearchEventActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.EventDetailsActivity"
             android:exported="false" />
         <activity
