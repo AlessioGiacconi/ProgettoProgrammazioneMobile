@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity() {
 
 
         tv_register.setOnClickListener {
-            startActivity(Intent(this, SearchEventActivity::class.java))
+            startActivity(Intent(this, MyEventsActivity::class.java))
         }
     }
 

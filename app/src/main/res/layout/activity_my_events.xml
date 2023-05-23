@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".activity.MyEventsActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/mclaren"
+        android:gravity="center"
+        android:text="I MIEI EVENTI"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/fragment_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toTopOf="@id/buttons_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:background="@drawable/evento_layout_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Seleziona quali tuoi eventi vuoi visualizzare"
+            android:textColor="@color/black"
+            android:fontFamily="@font/mclaren"
+            android:textSize="30sp"
+            tools:ignore="HardcodedText" />
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/buttons_layout"
+        android:layout_width="409dp"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragment_layout">
+
+        <Button
+            android:id="@+id/eventi_creati_btn"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginEnd="20dp"
+            android:backgroundTint="@color/verde_mimetico"
+            android:elevation="45dp"
+            android:fontFamily="@font/mclaren"
+            android:text="@string/eventi_creati" />
+
+        <Button
+            android:id="@+id/eventi_a_cui_partecipo_btn"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="@color/verde_mimetico"
+            android:elevation="45dp"
+            android:fontFamily="@font/mclaren"
+            android:text="@string/eventi_a_cui_partecipo" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
