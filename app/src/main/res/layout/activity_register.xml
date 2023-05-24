@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:layout_editor_absoluteX="372dp"
-    tools:layout_editor_absoluteY="150dp">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EAFFDD"
+        android:background="@color/tè_verde"
         tools:context=".activity.RegisterActivity">
 
         <FrameLayout
@@ -91,6 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -105,8 +104,8 @@
 
                 <EditText
                     android:id="@+id/et_nome"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:gravity="start"
@@ -123,6 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -137,8 +137,8 @@
 
                 <EditText
                     android:id="@+id/et_cognome"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:gravity="start"
@@ -155,6 +155,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -169,8 +170,8 @@
 
                 <EditText
                     android:id="@+id/et_telefono"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:gravity="start"
@@ -185,9 +186,9 @@
             <LinearLayout
                 android:id="@+id/layout_Ruolo"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="fill_vertical"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -204,14 +205,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_ruolo"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="107dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp">
 
                     <AutoCompleteTextView
                         android:id="@+id/Autocomplete_text_view_ruolo"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/layout_form"
                         android:fontFamily="@font/mclaren"
                         android:inputType="text"
@@ -226,9 +227,9 @@
             <LinearLayout
                 android:id="@+id/layout_sesso"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="fill_vertical"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -245,14 +246,14 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_sesso"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="107dp"
+                    android:layout_width="170dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="30dp">
 
                     <AutoCompleteTextView
                         android:id="@+id/Autocomplete_text_view_sesso"
                         android:layout_width="match_parent"
-                        android:layout_height="25dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/layout_form"
                         android:inputType="text"
                         android:textSize="16sp"
@@ -267,6 +268,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -281,8 +283,8 @@
 
                 <EditText
                     android:id="@+id/et_età"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
@@ -300,7 +302,7 @@
         <LinearLayout
             android:id="@+id/credenziali"
             android:layout_width="match_parent"
-            android:layout_height="213dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="40dp"
@@ -320,6 +322,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -334,8 +337,8 @@
 
                 <EditText
                     android:id="@+id/et_email"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:gravity="start"
@@ -353,6 +356,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -367,8 +371,8 @@
 
                 <EditText
                     android:id="@+id/et_password"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:gravity="start"
@@ -385,6 +389,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:gravity="center|start"
                 android:orientation="horizontal">
 
                 <TextView
@@ -399,10 +404,9 @@
 
                 <EditText
                     android:id="@+id/et_Conferma_password"
-                    android:layout_width="107dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="170dp"
+                    android:layout_height="40dp"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="10.5dp"
                     android:background="@drawable/layout_form"
                     android:gravity="start"
                     android:importantForAutofill="no"
@@ -417,6 +421,8 @@
                 android:id="@+id/relativeLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -430,7 +436,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="54dp"
-                    android:layout_marginTop="15dp"
+
                     android:layout_marginEnd="54dp"
                     android:text="@string/registrati"
                     app:backgroundTint="#4CAF50"
@@ -465,7 +471,7 @@
             android:id="@+id/già_registrato"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:text="Sei già registrato? Torna al"
             android:textAlignment="center"
             android:textColor="#000000"

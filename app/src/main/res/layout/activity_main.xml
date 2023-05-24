@@ -1,134 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stadio_sfondo">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:scaleType="centerCrop"
+        android:elevation="40dp"
+        android:alpha="0.9"
+        app:layout_constraintBottom_toTopOf="@id/stadio_sfondo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
+        app:srcCompat="@drawable/meetkick_logo"
+        app:strokeColor="@color/verde"
+        app:strokeWidth="10dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+
+        android:id="@+id/stadio_sfondo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
-            android:layout_height="175dp"
-            android:background="#FFFFFF"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mclaren"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="Benvenuto nella tua area personale!"
+            android:textColor="@color/white"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@id/button_visualizza_eventi"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/meetkick_logo"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteY="2dp" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/stadio_sfondo"
+            tools:ignore="HardcodedText" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <Button
+            android:id="@+id/button_visualizza_eventi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.9"
+            android:backgroundTint="@color/verde_acqua"
+            android:padding="10dp"
+            android:text="visualizza i tuoi eventi"
+            android:textSize="20sp"
+            app:icon="@drawable/calendar_icon_small"
+            app:layout_constraintBottom_toTopOf="@+id/button_cerca_eventi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView"
+            tools:ignore="HardcodedText" />
 
+        <Button
+            android:id="@+id/button_cerca_eventi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:alpha="0.9"
+            android:backgroundTint="@color/verde_acqua"
+            android:padding="10dp"
+            android:text="cerca gli eventi disponibili"
+            android:textSize="20sp"
+            app:icon="@drawable/baseline_search_24_small"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/button_visualizza_eventi"
+            tools:ignore="HardcodedText" />
 
-            android:id="@+id/stadio_sfondo"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/stadio_sfondo"
+            android:layout_height="wrap_content"
+            android:alpha="0.9"
+            app:backgroundTint="@color/verde_acqua"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
-            app:layout_constraintVertical_bias="1.0"
-            tools:layout_editor_absoluteX="0dp">
-
-            <Button
-                android:id="@+id/modifica_account"
-                android:layout_width="143dp"
-                android:layout_height="84dp"
-                android:alpha="0.60"
-                android:background="@drawable/oval_button"
-                android:text="Modifica Account"
-                app:backgroundTint="#0B1E8A"
-                app:fontFamily="@font/mclaren"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="231dp"
-                tools:layout_editor_absoluteY="609dp" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButton"
-                android:layout_width="93dp"
-                android:layout_height="55dp"
-                android:clickable="true"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="155dp" />
-
-            <Button
-                android:id="@+id/visualizza_eventi"
-                android:layout_width="150dp"
-                android:layout_height="80dp"
-                android:alpha="0.60"
-                android:background="@drawable/oval_button"
-                android:text="Cerca"
-                app:backgroundTint="#0B1E8A"
-                app:fontFamily="@font/mclaren"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="133dp"
-                tools:layout_editor_absoluteY="200dp" />
-
-            <Button
-                android:id="@+id/i_miei_eventi"
-                android:layout_width="155dp"
-                android:layout_height="95dp"
-                android:background="@drawable/oval_button"
-                android:text="I miei eventi"
-                android:alpha="0.60"
-                app:backgroundTint="#0B1E8A"
-                app:fontFamily="@font/mclaren"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="380dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@drawable/bottom_navigation_menu"/>
 
 
-
-            <Button
-                android:id="@+id/logout"
-                android:layout_width="155dp"
-                android:layout_height="75dp"
-                android:alpha="0.60"
-                android:background="@drawable/oval_button"
-                android:text="Logout"
-                app:backgroundTint="#0B1E8A"
-                app:fontFamily="@font/mclaren"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="31dp"
-                tools:layout_editor_absoluteY="618dp" />
-
-            <Button
-                android:id="@+id/crea_evento"
-                android:layout_width="155dp"
-                android:layout_height="95dp"
-                android:alpha="0.60"
-                android:background="@drawable/oval_button"
-                android:text="Crea evento"
-                app:backgroundTint="#0B1E8A"
-                app:fontFamily="@font/mclaren"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="231dp"
-                tools:layout_editor_absoluteY="380dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteY="678dp">
-
-
-            </LinearLayout>
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:alpha="0.60"
-                app:backgroundTint="#0B1E8A"
-                app:menu="@drawable/bottom_navigation_menu"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="3dp"
-                tools:layout_editor_absoluteY="496dp">
-
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
