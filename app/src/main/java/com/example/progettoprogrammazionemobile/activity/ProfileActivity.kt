@@ -52,7 +52,6 @@ class ProfileActivity : AppCompatActivity() {
 
         val fabEdit = findViewById<ExtendedFloatingActionButton>(R.id.edit_btn)
 
-        val user = Firebase.auth.currentUser
         if(auth.currentUser != null) {
             db.collection("users").document(auth.currentUser!!.email.toString()).get()
                 .addOnSuccessListener { doc ->

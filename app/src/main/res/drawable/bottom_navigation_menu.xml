@@ -4,7 +4,7 @@
         android:id="@+id/modifica_account"
         android:enabled="true"
         android:icon="@drawable/baseline_manage_accounts_24"
-        android:title="Modifica Account"/>
+        android:title="Il mio Account"/>
     <item
         android:id="@+id/crea_evento"
         android:enabled="true"
