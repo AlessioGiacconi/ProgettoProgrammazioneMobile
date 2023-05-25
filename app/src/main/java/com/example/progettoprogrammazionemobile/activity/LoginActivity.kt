@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        val mainActivity = Intent(this, ProfileActivity::class.java)
+        val mainActivity = Intent(this, MainActivity::class.java)
         startActivity(mainActivity)
         finish()
     }

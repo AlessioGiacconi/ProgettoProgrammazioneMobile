@@ -3,16 +3,16 @@
     <item
         android:id="@+id/modifica_account"
         android:enabled="true"
-        android:icon="@drawable/modifica_account"
+        android:icon="@drawable/baseline_manage_accounts_24"
         android:title="Modifica Account"/>
     <item
         android:id="@+id/crea_evento"
         android:enabled="true"
-        android:icon="@drawable/eventi"
+        android:icon="@drawable/baseline_post_add_24"
         android:title="Crea Evento"/>
     <item
         android:id="@+id/logout"
         android:enabled="true"
-        android:icon="@drawable/logout"
+        android:icon="@drawable/baseline_logout_24"
         android:title="Logout"/>
 </menu>
