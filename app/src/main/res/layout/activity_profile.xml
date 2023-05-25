@@ -21,11 +21,10 @@
         app:civ_shadow_radius="7dp"
         app:layout_constraintBottom_toTopOf="@id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/icona_profilo"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView"
@@ -98,14 +97,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/nome_utente"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_nome"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="2dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mclaren"
                         android:hint="@string/caricamento"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -128,14 +130,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/cognome_utente"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_cognome"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="2dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mclaren"
                         android:hint="@string/caricamento"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -158,14 +163,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/telefono_utente"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_telefono"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="2dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mclaren"
                         android:hint="@string/caricamento"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -188,14 +196,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/ruolo_utente"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_ruolo"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="2dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mclaren"
                         android:hint="@string/caricamento"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -218,14 +229,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/sesso_utente"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_sesso"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="2dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mclaren"
                         android:hint="@string/caricamento"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -248,14 +262,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/data_nascita_utente"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_data_nascita"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="2dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mclaren"
                         android:hint="@string/caricamento"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -278,14 +295,17 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/email_utente"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@id/tv_email"
                         android:layout_marginStart="100dp"
                         android:layout_marginTop="2dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mclaren"
                         android:hint="@string/caricamento"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
                 </RelativeLayout>
             </LinearLayout>
         </ScrollView>
@@ -310,13 +330,15 @@
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
                 android:backgroundTint="@color/verde_mimetico"
                 android:fontFamily="@font/mclaren"
                 android:gravity="center"
                 android:src="@android:color/transparent"
                 android:text="@string/modifica_profilo"
                 android:textSize="15sp"
-                app:icon="@drawable/profile_icon"></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+                app:icon="@drawable/profile_icon"/>
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -48,12 +48,12 @@ class LoginActivity : AppCompatActivity() {
 
 
         tv_register.setOnClickListener {
-            startActivity(Intent(this, MyEventsActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
     private fun updateUI() {
-        val mainActivity = Intent(this, MainActivity::class.java)
+        val mainActivity = Intent(this, ProfileActivity::class.java)
         startActivity(mainActivity)
         finish()
     }
