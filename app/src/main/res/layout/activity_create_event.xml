@@ -55,6 +55,42 @@
                 android:orientation="vertical">
 
                 <RelativeLayout
+                    android:id="@+id/titolo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tv_titolo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Titolo"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_titolo"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_titolo"
+                        android:layout_marginStart="120dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="Titolo"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:id="@+id/data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -238,7 +274,7 @@
                         android:layout_marginStart="120dp"
                         android:contentDescription="slider numero giocatori"
                         android:stepSize="1"
-                        android:valueFrom="0"
+                        android:valueFrom="1"
                         android:valueTo="9"
                         app:haloColor="@color/verde_mimetico"
                         app:thumbColor="@color/verde_scuro"
@@ -314,7 +350,7 @@
                 android:src="@android:color/transparent"
                 android:text="@string/conferma_modifica"
                 android:textSize="15sp"
-                app:icon="@drawable/calendar_icon"></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+                app:icon="@drawable/calendar_icon"/>
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

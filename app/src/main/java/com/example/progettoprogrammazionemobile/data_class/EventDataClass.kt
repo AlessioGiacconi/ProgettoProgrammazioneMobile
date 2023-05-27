@@ -9,6 +9,7 @@ data class EventDataClass (
     val luogo : String? = "",
     val ruoli_richiesti: List<String>? = null,
     val persone_richieste: Long? = 0,
-    val descrizione: String? = ""
+    val descrizione: String? = "",
+    val creatore: String? = ""
 )
 

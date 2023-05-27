@@ -53,7 +53,7 @@ class SearchEventActivity : AppCompatActivity() {
 
                     if(dc.type == DocumentChange.Type.ADDED){
                         Log.d("SearchActivity", "sono qui")
-                        Log.d("SearcActivity", dc.document.data.toString())
+                        Log.d("SearchActivity", dc.document.data.toString())
                         eventArrayList.add(dc.document.toObject(EventDataClass::class.java))
                     }
                 }

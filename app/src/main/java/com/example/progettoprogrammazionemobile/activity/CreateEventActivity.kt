@@ -4,14 +4,23 @@ import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
 import com.google.android.material.slider.Slider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.Arrays
 import java.util.Calendar
@@ -24,16 +33,26 @@ class CreateEventActivity : AppCompatActivity() {
     private var cal = Calendar.getInstance()
     lateinit var scegliRuoli: TextView
     lateinit var numeroGiocatori: Slider
-    lateinit var descrizione : TextView
+    lateinit var descrizione : EditText
+
+    private lateinit var auth: FirebaseAuth
+    private val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
 
+        auth = Firebase.auth
+
+        val titolo = findViewById<EditText>(R.id.et_titolo)
         scegliOra = findViewById(R.id.et_ora)
         scegliData = findViewById(R.id.et_data)
+        val scegliLuogo = findViewById<EditText>(R.id.et_luogo)
         scegliRuoli = findViewById(R.id.multiselect_ruoli)
         numeroGiocatori = findViewById(R.id.slider_giocatori)
-        descrizione = findViewById(R.id.tv_descrizione)
+        descrizione = findViewById(R.id.et_descrizione)
+        var valoreSlider = 1
+
+        val conferma = findViewById<Button>(R.id.confirm_btn)
 
         descrizione.movementMethod = ScrollingMovementMethod()
 
@@ -95,23 +114,39 @@ class CreateEventActivity : AppCompatActivity() {
 
         }
 
-        // eventuali listener per lo slider del numero giocatori
-
-        numeroGiocatori.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
-            override fun onStartTrackingTouch(slider: Slider) {
-                // Responds to when slider's touch event is being started
-            }
-
-            override fun onStopTrackingTouch(slider: Slider) {
-                // Responds to when slider's touch event is being stopped
-            }
-        })
-
+        // listener per lo slider del numero giocatori
         numeroGiocatori.addOnChangeListener { slider, value, fromUser ->
-            // Responds to when slider's value is changed
+            valoreSlider = numeroGiocatori.value.toInt()
         }
 
 
+
+        conferma.setOnClickListener(View.OnClickListener {
+            if(scegliData.text.toString().isNotEmpty() && scegliOra.text.toString().isNotEmpty() && scegliLuogo.text.toString().isNotEmpty() && scegliRuoli.text.toString().isNotEmpty()
+                && descrizione.text.toString().isNotEmpty()){
+                val event = hashMapOf(
+                    "creatore" to auth.currentUser!!.email.toString(),
+                    "titolo" to titolo.text.toString(),
+                    "data" to scegliData.text.toString(),
+                    "ora" to scegliOra.text.toString(),
+                    "luogo" to scegliLuogo.text.toString(),
+                    "ruoli_richiesti" to scegliRuoli.text.split(" ").dropLast(1),
+                    "persone_richieste" to valoreSlider,
+                    "descrizione" to descrizione.text.toString()
+                )
+                Log.d("CreateActivity", "ok")
+                Log.d("CreateActivity", "Event hash map:$event")
+                db.collection("events").document(event["titolo"].toString()).set(event).addOnSuccessListener {
+                    showMessage("Evento creato con successo")
+                    startActivity(Intent(this, MainActivity::class.java))
+                    finish()
+                }.addOnFailureListener {
+                    showMessage("Qualcosa è andato storto...")
+                }
+            }else{
+              showMessage("Compila tutti i campi per pubblicare il nuovo evento")
+            }
+        })
 
     }
 
@@ -120,4 +155,10 @@ class CreateEventActivity : AppCompatActivity() {
         val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
         scegliData.setText(sdf.format(cal.time))
     }
+
+    private fun showMessage(messaggio: String) {
+        Toast.makeText(this, messaggio, Toast.LENGTH_LONG).show()
+    }
+
+
 }
