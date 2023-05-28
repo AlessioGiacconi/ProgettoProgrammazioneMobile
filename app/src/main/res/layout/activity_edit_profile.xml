@@ -219,7 +219,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:fontFamily="@font/mclaren"
-                            android:hint="Caricamento..."
                             android:inputType="text"
                             android:textSize="19sp" />
 
@@ -263,7 +262,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:fontFamily="@font/mclaren"
-                            android:hint="Caricamento..."
                             android:inputType="text"
                             android:textSize="19sp" />
 
@@ -372,7 +370,7 @@
                         android:layout_marginStart="110dp"
                         android:fontFamily="@font/mclaren"
                         android:hint="Caricamento..."
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:textSize="19sp" />
                 </RelativeLayout>
 
@@ -405,7 +403,7 @@
                         android:layout_marginStart="110dp"
                         android:fontFamily="@font/mclaren"
                         android:hint="Caricamento..."
-                        android:inputType="textPassword"
+                        android:inputType="text"
                         android:textSize="19sp" />
                 </RelativeLayout>
             </LinearLayout>
@@ -437,7 +435,7 @@
                 android:src="@android:color/transparent"
                 android:text="@string/conferma_modifica"
                 android:textSize="15sp"
-                app:icon="@drawable/profile_icon"></com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton>
+                app:icon="@drawable/profile_icon"/>
         </LinearLayout>
 
 

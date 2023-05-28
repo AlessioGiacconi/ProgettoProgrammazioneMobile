@@ -33,7 +33,6 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-
         auth = Firebase.auth
         storageRef = FirebaseStorage.getInstance().reference.child("profileImages")
 
