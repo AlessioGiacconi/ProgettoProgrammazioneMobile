@@ -216,6 +216,9 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/Autocomplete_edit_ruolo"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:longClickable="false"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
                             android:fontFamily="@font/mclaren"
@@ -261,6 +264,9 @@
                             android:id="@+id/Autocomplete_edit_sesso"
                             android:layout_width="match_parent"
                             android:layout_height="60dp"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:longClickable="false"
                             android:fontFamily="@font/mclaren"
                             android:inputType="text"
                             android:textSize="19sp" />
@@ -303,40 +309,6 @@
                         android:hint="--/--/----"
                         android:inputType="datetime|date"
                         android:textColor="@color/black"
-                        android:textSize="19sp" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/layout_form"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/tv_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/mclaren"
-                        android:text="@string/email"
-                        android:textColor="@color/black"
-                        android:textSize="19sp" />
-
-                    <EditText
-                        android:id="@+id/et_edit_email"
-                        android:layout_width="488dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/tv_email"
-                        android:layout_marginStart="110dp"
-                        android:fontFamily="@font/mclaren"
-                        android:hint="Caricamento..."
-                        android:inputType="textEmailAddress"
                         android:textSize="19sp" />
                 </RelativeLayout>
 

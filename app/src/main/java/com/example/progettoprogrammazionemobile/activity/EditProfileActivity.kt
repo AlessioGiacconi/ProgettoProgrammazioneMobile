@@ -5,16 +5,13 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Profile
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
@@ -69,7 +66,6 @@ class EditProfileActivity : AppCompatActivity() {
         val editCognome = findViewById<EditText>(R.id.et_edit_cognome)
         val editTelefono = findViewById<EditText>(R.id.et_edit_telefono)
         dateEdit = findViewById(R.id.et_edit_data_di_nascita)
-        val editEmail = findViewById<EditText>(R.id.et_edit_email)
         val editPassword = findViewById<EditText>(R.id.et_edit_password)
         val editConfermaPassword = findViewById<EditText>(R.id.et_edit_conferma_password)
 
@@ -84,7 +80,7 @@ class EditProfileActivity : AppCompatActivity() {
         autoCompleteRuolo.onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, i, l ->
 
-               var editRuolo = adapterView.getItemAtPosition(i) as String
+                var editRuolo = adapterView.getItemAtPosition(i) as String
             }
 
         val confrim_btn = findViewById<ExtendedFloatingActionButton>(R.id.confirm_btn)
@@ -129,7 +125,6 @@ class EditProfileActivity : AppCompatActivity() {
                     dateEdit.setText(loggedUser.data_di_nascita)
                     autoCompleteSesso.setText(loggedUser.sesso)
                     autoCompleteRuolo.setText(loggedUser.ruolo)
-                    editEmail.setText(loggedUser.email)
                     editPassword.setText(loggedUser.password)
                     editConfermaPassword.setText(loggedUser.password)
                     if (loggedUser.profile_img != "") {
@@ -147,56 +142,78 @@ class EditProfileActivity : AppCompatActivity() {
         editProfileImage.setOnClickListener(View.OnClickListener {
             openGallery()
         })
-// fixare i check sulle nuove password e fixxare l'image view e non cambia il nome della foto nello storage
+
+        autoCompleteRuolo.setOnClickListener {
+            autoCompleteRuolo.setText("")
+        }
+
+        autoCompleteSesso.setOnClickListener {
+            autoCompleteSesso.setText("")
+        }
+
+
         confrim_btn.setOnClickListener(View.OnClickListener {
-            if (editPassword.text.toString() == editConfermaPassword.text.toString() && editPassword.text.toString().length >= 8) {
-
-                if (editEmail.text.toString() != loggedUser.email) {
-                    auth.currentUser!!.updateEmail(editEmail.text.toString())
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Log.d("EditActivity", "Email updated")
-                            } else {
-                                Log.d("EditActivity", "Failed to update email")
-                            }
-                        }
-                }
-
-                if (editPassword.text.toString() != loggedUser.password && editPassword.text.toString().length >= 8) {
-                    auth.currentUser!!.updatePassword(editPassword.text.toString())
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                Log.d("EditActivity", "Password updated")
-                            } else {
-                                Log.d("EditActivity", "Failed to update password")
-                            }
-
-                        }
+            if (editPassword.text.toString().isNotEmpty() && editCognome.text.toString()
+                    .isNotEmpty() && editTelefono.text.toString().isNotEmpty() &&
+                autoCompleteRuolo.text.toString().isNotEmpty() && autoCompleteSesso.text.toString()
+                    .isNotEmpty() && dateEdit.text.toString().isNotEmpty()
+                && editPassword.text.toString().isNotEmpty() && editConfermaPassword.text.toString()
+                    .isNotEmpty()
+            ) {
+                if (editPassword.text.toString() == loggedUser.password) {
+                    val editedUser = hashMapOf(
+                        "Nome" to editNome.text.toString(),
+                        "Cognome" to editCognome.text.toString(),
+                        "Telefono" to editTelefono.text.toString(),
+                        "Data di Nascita" to dateEdit.text.toString(),
+                        "Sesso" to autoCompleteSesso.text.toString(),
+                        "Ruolo" to autoCompleteRuolo.text.toString(),
+                        "Email" to loggedUser.email,
+                        "Password" to loggedUser.password,
+                    )
+                    Log.d("EditActivity", "Edit hash map:$editedUser")
+                    saveEditedInfo(editedUser)
                 } else {
-                    if (editPassword.text.toString().length < 8) {
-                        showMessage("Password deve contenere almeno 8 caratteri")
+                    if (editPassword.text.toString() != loggedUser.password && editPassword.text.toString().length >= 8 &&
+                        editPassword.text.toString() == editConfermaPassword.text.toString()
+                    ) {
+                        auth.currentUser!!.updatePassword(editPassword.text.toString())
+                            .addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    Log.d("EditActivity", "Password updated")
+                                    showMessage("La password è stata cambiata")
+                                    val editedUser = hashMapOf(
+                                        "Nome" to editNome.text.toString(),
+                                        "Cognome" to editCognome.text.toString(),
+                                        "Telefono" to editTelefono.text.toString(),
+                                        "Data di Nascita" to dateEdit.text.toString(),
+                                        "Sesso" to autoCompleteSesso.text.toString(),
+                                        "Ruolo" to autoCompleteRuolo.text.toString(),
+                                        "Email" to loggedUser.email,
+                                        "Password" to editPassword.text.toString(),
+                                    )
+                                    Log.d("EditActivity", "Edit hash map:$editedUser")
+                                    saveEditedInfo(editedUser)
+                                } else {
+                                    Log.d("EditActivity", "Failed to update password")
+                                }
+                            }
                     } else {
-                        if (editPassword.text.toString() != editConfermaPassword.text.toString())
-                            showMessage("Le due password non coincidono, riprova")
+                        if (editPassword.text.toString().length < 8) {
+                            showMessage("Password deve contenere almeno 8 caratteri")
+                            return@OnClickListener
+                        } else {
+                            if (editPassword.text.toString() != editConfermaPassword.text.toString())
+                                showMessage("Le due password non coincidono, riprova")
+                            return@OnClickListener
+                        }
                     }
                 }
-
-                val editedUser = hashMapOf(
-                    "Nome" to editNome.text.toString(),
-                    "Cognome" to editCognome.text.toString(),
-                    "Telefono" to editTelefono.text.toString(),
-                    "Data di Nascita" to dateEdit.text.toString(),
-                    "Sesso" to autoCompleteSesso.text.toString(),
-                    "Ruolo" to autoCompleteRuolo.text.toString(),
-                    "Email" to editEmail.text.toString(),
-                    "Password" to editPassword.text.toString(),
-                )
-                Log.d("EditActivity", "Edit hash map:$editedUser")
-
-                saveEditedInfo(editedUser)
+            } else {
+                showMessage("Non tutti i campi sono stati compilati")
             }
-        })
 
+        })
     }
 
     private fun saveEditedInfo(editedUser: HashMap<String, String>) {
@@ -204,36 +221,33 @@ class EditProfileActivity : AppCompatActivity() {
         Log.d("EditActivity", newImage.toString())
         if (newImage == null) {
             editedUser["Immagine Profilo"] = loggedUser.profile_img
-            db.collection("users").document(loggedUser.email).delete()
-            db.collection("users").document(editedUser["Email"].toString()).set(editedUser)
+            db.collection("users").document(loggedUser.email).update(editedUser as Map<String, Any>)
                 .addOnSuccessListener {
                     showMessage("Informazioni modificate con successo")
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }.addOnFailureListener {
-                showMessage("Qualcosa è andato storto durante la modifica")
-            }
+                    showMessage("Qualcosa è andato storto durante la modifica")
+                }
 
         } else {
             val deleteImg = storageRef.child("profileImages/${loggedUser.email}")
             deleteImg.delete()
-            val email = editedUser["Email"].toString()
             val storageReference =
-                FirebaseStorage.getInstance().getReference("/profileImages/$email")
-
+                FirebaseStorage.getInstance().getReference("/profileImages/${loggedUser.email}")
             storageReference.putFile(newImage!!).addOnSuccessListener { it ->
                 storageReference.downloadUrl.addOnSuccessListener { it ->
                     it.toString()
                     editedUser["Immagine Profilo"] = it.toString()
-                    db.collection("users").document(loggedUser.email).delete()
-                    db.collection("users").document(editedUser["Email"].toString()).set(editedUser)
+                    db.collection("users").document(loggedUser.email)
+                        .update(editedUser as Map<String, Any>)
                         .addOnSuccessListener {
                             showMessage("Informazioni modificate con successo")
                             startActivity(Intent(this, MainActivity::class.java))
                             finish()
                         }.addOnFailureListener {
-                        showMessage("Qualcosa è andato storto durante la modifica")
-                    }
+                            showMessage("Qualcosa è andato storto durante la modifica")
+                        }
 
                 }
             }
