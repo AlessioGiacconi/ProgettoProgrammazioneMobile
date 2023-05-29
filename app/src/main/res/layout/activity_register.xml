@@ -47,15 +47,17 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginTop="160dp"
             android:layout_marginBottom="210dp"
             android:background="@drawable/layout_bg"
             android:gravity="center"
             android:orientation="vertical"
             android:padding="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/credenziali"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -67,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/welcome"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 app:fontFamily="@font/mclaren" />
 
@@ -79,7 +81,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/inserisci_le_tue_informazioni"
                 android:textAlignment="center"
-                android:textColor="#000000"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 app:fontFamily="@font/mclaren" />
 
@@ -97,14 +99,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/nome"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_nome"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:fontFamily="@font/mclaren"
@@ -112,7 +114,8 @@
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="@id/layout_nome"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </LinearLayout>
@@ -132,14 +135,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/cognome"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_cognome"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:fontFamily="@font/mclaren"
@@ -147,7 +150,8 @@
                     android:importantForAutofill="no"
                     android:inputType="text"
                     android:padding="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="@id/layout_cognome"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
             </LinearLayout>
@@ -167,14 +171,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/telefono"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_telefono"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:fontFamily="@font/mclaren"
@@ -182,7 +186,8 @@
                     android:importantForAutofill="no"
                     android:inputType="phone"
                     android:padding="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="@+id/layout_telefono"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -203,14 +208,14 @@
                     android:gravity="center"
                     android:text="@string/ruolo"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_ruolo"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="170dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp">
 
@@ -221,7 +226,7 @@
                         android:background="@drawable/layout_form"
                         android:fontFamily="@font/mclaren"
                         android:inputType="text"
-                        android:textSize="16sp"
+                        android:textSize="19sp"
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -244,15 +249,15 @@
                     android:gravity="center"
                     android:text="@string/sesso"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/et_sesso"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="30dp">
 
                     <AutoCompleteTextView
@@ -262,7 +267,7 @@
                         android:background="@drawable/layout_form"
                         android:fontFamily="@font/mclaren"
                         android:inputType="text"
-                        android:textSize="16sp"
+                        android:textSize="19sp"
                         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -284,23 +289,27 @@
                     android:layout_height="wrap_content"
                     android:text="@string/data_di_nascita"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_età"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_gravity="center"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:fontFamily="@font/mclaren"
                     android:gravity="center"
-                    android:importantForAutofill="no"
-                    android:inputType="date"
+                    android:inputType="datetime|date"
                     android:padding="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="@id/layout_data_di_nascita"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
@@ -310,9 +319,11 @@
 
         <LinearLayout
             android:id="@+id/credenziali"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/layout_bg"
             android:gravity="center"
             android:orientation="vertical"
@@ -338,14 +349,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/email"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_email"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:fontFamily="@font/mclaren"
@@ -353,7 +364,8 @@
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:padding="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="@+id/layout_email"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -374,14 +386,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/password"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_password"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:fontFamily="@font/mclaren"
@@ -389,7 +401,8 @@
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:padding="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="@+id/layout_password"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -410,14 +423,14 @@
                     android:layout_height="wrap_content"
                     android:text="@string/conferma_password"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:fontFamily="@font/mclaren" />
 
                 <EditText
                     android:id="@+id/et_Conferma_password"
-                    android:layout_width="170dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:layout_marginStart="30dp"
                     android:background="@drawable/layout_form"
                     android:fontFamily="@font/mclaren"
@@ -425,7 +438,8 @@
                     android:importantForAutofill="no"
                     android:inputType="textPassword"
                     android:padding="5dp"
-                    android:textColor="#000000"
+                    android:textColor="@color/black"
+                    android:textSize="19sp"
                     app:layout_constraintStart_toStartOf="@id/layout_Conferma_password"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -449,7 +463,7 @@
                     android:layout_alignParentTop="true"
 
                     android:text="@string/registrati"
-                    app:backgroundTint="#4CAF50"
+                    app:backgroundTint="@color/verde"
                     app:fontFamily="@font/mclaren"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -484,7 +498,7 @@
             android:layout_marginTop="10dp"
             android:text="Sei già registrato? Torna al"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="16sp"
             app:fontFamily="@font/mclaren"
             app:layout_constraintTop_toBottomOf="@+id/credenziali"
@@ -496,7 +510,7 @@
             android:layout_height="wrap_content"
             android:text="@string/login"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="18sp"
             app:fontFamily="@font/mclaren"
             app:layout_constraintTop_toBottomOf="@+id/già_registrato"
@@ -511,10 +525,10 @@
             android:clickable="true"
             android:contentDescription="profile_image"
             android:focusable="true"
-            app:civ_border_color="#32800F"
+            app:civ_border_color="@color/verde"
             app:civ_border_width="4dp"
             app:civ_shadow="true"
-            app:civ_shadow_color="#32800F"
+            app:civ_shadow_color="@color/verde"
             app:civ_shadow_radius="7dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/frameLayout2"

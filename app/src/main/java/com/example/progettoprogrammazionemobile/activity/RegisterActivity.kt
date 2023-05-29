@@ -2,6 +2,7 @@ package com.example.progettoprogrammazionemobile.activity
 
 import android.Manifest
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -32,6 +33,9 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.FileNotFoundException
 import java.io.InputStream
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -41,6 +45,8 @@ class RegisterActivity : AppCompatActivity() {
     private val PReqCode = 1
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
+    private var cal = Calendar.getInstance()
+    lateinit var userDataDiNascita: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -64,7 +70,7 @@ class RegisterActivity : AppCompatActivity() {
         val userNome = findViewById<EditText>(R.id.et_nome)
         val userCognome = findViewById<EditText>(R.id.et_cognome)
         val userTelefono = findViewById<EditText>(R.id.et_telefono)
-        val userDataDiNascita = findViewById<EditText>(R.id.et_età)
+        userDataDiNascita = findViewById(R.id.et_età)
         var userSesso = "Maschio"
         var userRuolo = "Attaccante"
         val userEmail = findViewById<EditText>(R.id.et_email)
@@ -83,6 +89,24 @@ class RegisterActivity : AppCompatActivity() {
 
              userRuolo = adapterView.getItemAtPosition(i) as String
         }
+
+        val dateSetListener =
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                cal.set(Calendar.YEAR, year)
+                cal.set(Calendar.MONTH, monthOfYear)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+                updateDateInView()
+            }
+
+        userDataDiNascita.setOnClickListener(View.OnClickListener {
+            DatePickerDialog(
+                this,
+                dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
+        })
 
         imgProfilePhoto.setOnClickListener(View.OnClickListener {
                 if (Build.VERSION.SDK_INT >= 22){
@@ -240,5 +264,10 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
+    private fun updateDateInView() {
+        val myFormat = "dd.MM.yyyy"
+        val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
+        userDataDiNascita.setText(sdf.format(cal.time))
+    }
 }
 
