@@ -43,8 +43,6 @@ class EditProfileActivity : AppCompatActivity() {
     private val db = Firebase.firestore
     private lateinit var storageRef: StorageReference
     private lateinit var loggedUser: UserDataClass
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -68,7 +66,6 @@ class EditProfileActivity : AppCompatActivity() {
         dateEdit = findViewById(R.id.et_edit_data_di_nascita)
         val editPassword = findViewById<EditText>(R.id.et_edit_password)
         val editConfermaPassword = findViewById<EditText>(R.id.et_edit_conferma_password)
-
 
 
         autoCompleteSesso.onItemClickListener =

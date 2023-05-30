@@ -86,7 +86,6 @@ class SearchEventActivity : AppCompatActivity() {
                 Log.d("SearchActivitu", "sono oltre")
                 cardAdapter.notifyDataSetChanged()
             }
-
         })
 
     }

@@ -315,17 +315,37 @@
             android:gravity="center"
             android:orientation="horizontal">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/partecipa_annulla"
-                android:layout_width="130dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="50dp"
-                android:text="Partecipa"
-                android:textAlignment="center"
-                android:fontFamily="@font/mclaren"
-                android:backgroundTint="@color/verde"
-                tools:ignore="HardcodedText" />
+                <Button
+                    android:id="@+id/annulla"
+                    android:layout_width="130dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="50dp"
+                    android:backgroundTint="@color/rosso"
+                    android:fontFamily="@font/mclaren"
+                    android:text="Annulla"
+                    android:textAlignment="center"
+                    tools:ignore="HardcodedText" />
+
+                <Button
+                    android:id="@+id/partecipa"
+                    android:layout_width="130dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="50dp"
+                    android:text="Partecipa"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/mclaren"
+                    android:backgroundTint="@color/verde"
+                    tools:ignore="HardcodedText" />
+
+
+
+            </RelativeLayout>
+
+
 
             <Button
                 android:id="@+id/whatsapp_btn"
@@ -340,6 +360,7 @@
                 app:iconPadding="0dp"
                 app:backgroundTint="@color/verde_scuro"
                 app:icon="@drawable/icon_whatsapp" />
+
 
             <Button
                 android:id="@+id/telefona_btn"

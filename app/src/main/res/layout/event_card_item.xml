@@ -168,6 +168,7 @@
                 tools:ignore="HardcodedText" />
 
             <Button
+                android:id="@+id/dettagli_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="50dp"

@@ -476,13 +476,11 @@
                     style="?android:attr/progressBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignStart="@+id/register_btn"
                     android:layout_alignTop="@+id/register_btn"
                     android:layout_alignEnd="@+id/register_btn"
+                    android:layout_alignStart="@id/register_btn"
                     android:layout_alignBottom="@id/register_btn"
-                    android:layout_marginStart="76dp"
                     android:layout_marginTop="2dp"
-                    android:layout_marginEnd="76dp"
                     android:layout_marginBottom="0dp" />
 
 
