@@ -15,9 +15,11 @@
     <string name="login"><b>Login!</b></string>
     <string name="inserisci_le_tue_informazioni">Inserisci le tue informazioni!</string>
     <string name="modifica_profilo">Modifica</string>
-    <string name="caricamento">Caricamento...</string>
+    <string name="caricamento">Caricamento…</string>
     <string name="conferma_modifica">conferma</string>
     <string name="whatsapp">Whatsapp</string>
     <string name="eventi_creati">Eventi creati</string>
-    <string name="eventi_a_cui_partecipo">Partecipo a...</string>
+    <string name="eventi_a_cui_partecipo">Partecipo a…</string>
+    <string name="creatore">%1$s %2$s</string>
+    <string name="titolo"><b>%1$s</b></string>
 </resources>
