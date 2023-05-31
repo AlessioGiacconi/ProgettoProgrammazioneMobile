@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -14,7 +13,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class EventDetailsActivity : AppCompatActivity() {
-
 
     private val db = Firebase.firestore
 
@@ -37,7 +35,10 @@ class EventDetailsActivity : AppCompatActivity() {
 
         val evento = intent.extras
 
-        val callBtn = findViewById<Button>(R.id.telefona_btn)
+        val chiamaBtn = findViewById<Button>(R.id.telefona_btn)
+        val annullaBtn = findViewById<Button>(R.id.annulla_btn)
+        val partecipaBtn = findViewById<Button>(R.id.partecipa_btn)
+        val whatsappBtn = findViewById<Button>(R.id.whatsapp_btn)
 
         db.collection("users").document(evento!!.getString("creatore").toString()).get()
             .addOnSuccessListener { doc ->
@@ -62,11 +63,18 @@ class EventDetailsActivity : AppCompatActivity() {
                 Toast.makeText(this, "Errore di comunicazione col database!", Toast.LENGTH_LONG)
                     .show()
             }
-        
-        callBtn.setOnClickListener {
+
+        chiamaBtn.setOnClickListener {
             val phoneUri = "tel:$telefonoCreatore"
             val phoneIntent = Intent(Intent.ACTION_DIAL, Uri.parse(phoneUri))
             startActivity(phoneIntent)
+        }
+
+        whatsappBtn.setOnClickListener {
+            val waLink =
+                "https://wa.me/$telefonoCreatore?text=Ciao%2C%20ho%20visto%20il%20tuo%20evento%20su%20Meet%26Kick%20e%20vorrei%20partecipare%21"
+            val whatsappIntent = Intent(Intent.ACTION_VIEW, Uri.parse(waLink))
+            startActivity(whatsappIntent)
         }
     }
 }

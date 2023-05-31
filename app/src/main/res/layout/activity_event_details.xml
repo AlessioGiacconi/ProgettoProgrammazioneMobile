@@ -342,7 +342,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/annulla"
+                    android:id="@+id/annulla_btn"
                     android:layout_width="130dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="50dp"
@@ -353,7 +353,7 @@
                     tools:ignore="HardcodedText" />
 
                 <Button
-                    android:id="@+id/partecipa"
+                    android:id="@+id/partecipa_btn"
                     android:layout_width="130dp"
                     android:layout_height="60dp"
                     android:layout_marginEnd="50dp"
