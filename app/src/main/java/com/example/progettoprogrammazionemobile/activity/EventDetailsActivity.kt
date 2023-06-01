@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -47,14 +48,9 @@ class EventDetailsActivity : AppCompatActivity() {
         val partecipaBtn = findViewById<Button>(R.id.partecipa_btn)
         val whatsappBtn = findViewById<Button>(R.id.whatsapp_btn)
 
-        if (auth.currentUser!!.email == evento!!.getString("creatore")) {
-            annullaBtn.visibility = View.INVISIBLE
-            partecipaBtn.visibility = View.INVISIBLE
-            chiamaBtn.visibility = View.INVISIBLE
-            whatsappBtn.visibility = View.INVISIBLE
-        }
 
-        db.collection("users").document(evento.getString("creatore").toString()).get()
+
+        db.collection("users").document(evento!!.getString("creatore").toString()).get()
             .addOnSuccessListener { doc ->
                 nomeCreatore = doc["Nome"].toString()
                 cognomeCreatore = doc["Cognome"].toString()
@@ -73,17 +69,24 @@ class EventDetailsActivity : AppCompatActivity() {
                                 flag = true
                             }
 
-                            if (eventList!!.isEmpty()) {
-                                Log.d("EventDetails", eventList.toString())
-                                partecipaBtn.visibility = View.VISIBLE
+                            if (auth.currentUser!!.email == evento.getString("creatore")) {
                                 annullaBtn.visibility = View.INVISIBLE
+                                partecipaBtn.visibility = View.INVISIBLE
+                                chiamaBtn.visibility = View.INVISIBLE
+                                whatsappBtn.visibility = View.INVISIBLE
                             } else {
-                                if (flag) {
-                                    annullaBtn.visibility = View.VISIBLE
-                                    partecipaBtn.visibility = View.INVISIBLE
-                                } else {
+                                if (eventList!!.isEmpty()) {
+                                    Log.d("EventDetails", eventList.toString())
                                     partecipaBtn.visibility = View.VISIBLE
                                     annullaBtn.visibility = View.INVISIBLE
+                                } else {
+                                    if (flag) {
+                                        annullaBtn.visibility = View.VISIBLE
+                                        partecipaBtn.visibility = View.INVISIBLE
+                                    } else {
+                                        partecipaBtn.visibility = View.VISIBLE
+                                        annullaBtn.visibility = View.INVISIBLE
+                                    }
                                 }
                             }
                         }
@@ -110,26 +113,26 @@ class EventDetailsActivity : AppCompatActivity() {
 
         partecipaBtn.setOnClickListener {
             val docUtente = db.collection("users").document(auth.currentUser!!.email.toString())
-            val eventDoc = db.collection("events").document(evento.getString("titolo").toString())
+            val eventDoc = db.collection("events").document(evento!!.getString("titolo").toString())
             docUtente.update("Miei Eventi", FieldValue.arrayUnion(evento.getString("titolo")))
             eventDoc.update("persone_richieste", evento.getLong("persone_richieste") - 1)
             partecipaBtn.visibility = View.INVISIBLE
             annullaBtn.visibility = View.VISIBLE
             Toast.makeText(this, "Partecipazione all'evento registrata", Toast.LENGTH_SHORT).show()
             finish()
-            startActivity(Intent(this, SearchEventActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
         annullaBtn.setOnClickListener {
             val docUtente = db.collection("users").document(auth.currentUser!!.email.toString())
-            val eventDoc = db.collection("events").document(evento.getString("titolo").toString())
+            val eventDoc = db.collection("events").document(evento!!.getString("titolo").toString())
             docUtente.update("Miei Eventi", FieldValue.arrayRemove(evento.getString("titolo")))
             eventDoc.update("persone_richieste", evento.getLong("persone_richieste") + 1)
             partecipaBtn.visibility = View.VISIBLE
             annullaBtn.visibility = View.INVISIBLE
             Toast.makeText(this, "Partecipazione all'evento annullata", Toast.LENGTH_SHORT).show()
             finish()
-            startActivity(Intent(this, SearchEventActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
         }
 
 
