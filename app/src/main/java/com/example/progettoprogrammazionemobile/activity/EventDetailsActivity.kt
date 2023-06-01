@@ -73,12 +73,12 @@ class EventDetailsActivity : AppCompatActivity() {
                                 flag = true
                             }
 
-                        if (eventList!!.isEmpty()) {
-                            Log.d("EventDetails", eventList.toString())
-                            partecipaBtn.visibility = View.VISIBLE
-                            annullaBtn.visibility = View.INVISIBLE
-                        } else {
-                                if(flag){
+                            if (eventList!!.isEmpty()) {
+                                Log.d("EventDetails", eventList.toString())
+                                partecipaBtn.visibility = View.VISIBLE
+                                annullaBtn.visibility = View.INVISIBLE
+                            } else {
+                                if (flag) {
                                     annullaBtn.visibility = View.VISIBLE
                                     partecipaBtn.visibility = View.INVISIBLE
                                 } else {
