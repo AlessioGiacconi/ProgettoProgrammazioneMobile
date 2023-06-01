@@ -5,24 +5,31 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.progettoprogrammazionemobile.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class EventDetailsActivity : AppCompatActivity() {
 
     private val db = Firebase.firestore
-
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event_details)
 
+        auth = Firebase.auth
+
         var nomeCreatore: String?
         var cognomeCreatore: String?
         var telefonoCreatore: String? = null
+        var eventList: ArrayList<*>?
 
         val titolo = findViewById<TextView>(R.id.titolo)
         val creatore = findViewById<TextView>(R.id.creatore)
@@ -40,11 +47,47 @@ class EventDetailsActivity : AppCompatActivity() {
         val partecipaBtn = findViewById<Button>(R.id.partecipa_btn)
         val whatsappBtn = findViewById<Button>(R.id.whatsapp_btn)
 
-        db.collection("users").document(evento!!.getString("creatore").toString()).get()
+        if (auth.currentUser!!.email == evento!!.getString("creatore")) {
+            annullaBtn.visibility = View.INVISIBLE
+            partecipaBtn.visibility = View.INVISIBLE
+            chiamaBtn.visibility = View.INVISIBLE
+            whatsappBtn.visibility = View.INVISIBLE
+        }
+
+        db.collection("users").document(evento.getString("creatore").toString()).get()
             .addOnSuccessListener { doc ->
                 nomeCreatore = doc["Nome"].toString()
                 cognomeCreatore = doc["Cognome"].toString()
                 telefonoCreatore = doc["Telefono"].toString()
+
+                db.collection("users").document(auth.currentUser!!.email.toString()).get()
+                    .addOnSuccessListener { doc ->
+                        eventList = doc["Miei Eventi"] as ArrayList<*>?
+                        Log.d("DATABASE", eventList.toString())
+
+                        var flag = false
+
+                        for (e in eventList!!) {
+                            Log.d("EventDetails", e.toString())
+                            if (evento.getString("titolo") == e) {
+                                flag = true
+                            }
+
+                        if (eventList!!.isEmpty()) {
+                            Log.d("EventDetails", eventList.toString())
+                            partecipaBtn.visibility = View.VISIBLE
+                            annullaBtn.visibility = View.INVISIBLE
+                        } else {
+                                if(flag){
+                                    annullaBtn.visibility = View.VISIBLE
+                                    partecipaBtn.visibility = View.INVISIBLE
+                                } else {
+                                    partecipaBtn.visibility = View.VISIBLE
+                                    annullaBtn.visibility = View.INVISIBLE
+                                }
+                            }
+                        }
+                    }
 
                 titolo.text = getString(R.string.titolo, evento.getString("titolo"))
                 creatore.text = getString(R.string.creatore, nomeCreatore, cognomeCreatore)
@@ -63,6 +106,32 @@ class EventDetailsActivity : AppCompatActivity() {
                 Toast.makeText(this, "Errore di comunicazione col database!", Toast.LENGTH_LONG)
                     .show()
             }
+
+
+        partecipaBtn.setOnClickListener {
+            val docUtente = db.collection("users").document(auth.currentUser!!.email.toString())
+            val eventDoc = db.collection("events").document(evento.getString("titolo").toString())
+            docUtente.update("Miei Eventi", FieldValue.arrayUnion(evento.getString("titolo")))
+            eventDoc.update("persone_richieste", evento.getLong("persone_richieste") - 1)
+            partecipaBtn.visibility = View.INVISIBLE
+            annullaBtn.visibility = View.VISIBLE
+            Toast.makeText(this, "Partecipazione all'evento registrata", Toast.LENGTH_SHORT).show()
+            finish()
+            startActivity(Intent(this, SearchEventActivity::class.java))
+        }
+
+        annullaBtn.setOnClickListener {
+            val docUtente = db.collection("users").document(auth.currentUser!!.email.toString())
+            val eventDoc = db.collection("events").document(evento.getString("titolo").toString())
+            docUtente.update("Miei Eventi", FieldValue.arrayRemove(evento.getString("titolo")))
+            eventDoc.update("persone_richieste", evento.getLong("persone_richieste") + 1)
+            partecipaBtn.visibility = View.VISIBLE
+            annullaBtn.visibility = View.INVISIBLE
+            Toast.makeText(this, "Partecipazione all'evento annullata", Toast.LENGTH_SHORT).show()
+            finish()
+            startActivity(Intent(this, SearchEventActivity::class.java))
+        }
+
 
         chiamaBtn.setOnClickListener {
             val phoneUri = "tel:$telefonoCreatore"

@@ -1,20 +1,18 @@
 package com.example.progettoprogrammazionemobile.adapter
 
+import android.app.Activity
 import android.content.Intent
-import android.util.EventLog.Event
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.os.bundleOf
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progettoprogrammazionemobile.R
 import com.example.progettoprogrammazionemobile.activity.EventDetailsActivity
 import com.example.progettoprogrammazionemobile.data_class.EventDataClass
-
 
 
 class RecyclerViewAdapter(private val eventList : ArrayList<EventDataClass>) : RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder>() {
@@ -49,6 +47,7 @@ class RecyclerViewAdapter(private val eventList : ArrayList<EventDataClass>) : R
             Log.d("Adapter", dettagli.toString())
             eventDetails.putExtras(dettagli)
             v.context.startActivity(eventDetails)
+            (v.context as Activity).finish()
         }
     }
 
