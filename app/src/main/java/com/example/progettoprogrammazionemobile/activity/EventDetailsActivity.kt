@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
 import com.google.firebase.auth.FirebaseAuth
@@ -47,7 +48,11 @@ class EventDetailsActivity : AppCompatActivity() {
         val annullaBtn = findViewById<Button>(R.id.annulla_btn)
         val partecipaBtn = findViewById<Button>(R.id.partecipa_btn)
         val whatsappBtn = findViewById<Button>(R.id.whatsapp_btn)
+        val modificaBtn = findViewById<Button>(R.id.modifica_btn)
+        val eliminaBtn = findViewById<Button>(R.id.elimina_btn)
 
+        modificaBtn.visibility = View.INVISIBLE
+        eliminaBtn.visibility = View.INVISIBLE
 
 
         db.collection("users").document(evento!!.getString("creatore").toString()).get()
@@ -74,11 +79,14 @@ class EventDetailsActivity : AppCompatActivity() {
                                 partecipaBtn.visibility = View.INVISIBLE
                                 chiamaBtn.visibility = View.INVISIBLE
                                 whatsappBtn.visibility = View.INVISIBLE
+                                modificaBtn.visibility = View.VISIBLE
+                                eliminaBtn.visibility = View.VISIBLE
                             } else {
                                 if (eventList!!.isEmpty()) {
                                     Log.d("EventDetails", eventList.toString())
                                     partecipaBtn.visibility = View.VISIBLE
                                     annullaBtn.visibility = View.INVISIBLE
+
                                 } else {
                                     if (flag) {
                                         annullaBtn.visibility = View.VISIBLE
@@ -113,7 +121,7 @@ class EventDetailsActivity : AppCompatActivity() {
 
         partecipaBtn.setOnClickListener {
             val docUtente = db.collection("users").document(auth.currentUser!!.email.toString())
-            val eventDoc = db.collection("events").document(evento!!.getString("titolo").toString())
+            val eventDoc = db.collection("events").document(evento.getString("titolo").toString())
             docUtente.update("Miei Eventi", FieldValue.arrayUnion(evento.getString("titolo")))
             eventDoc.update("persone_richieste", evento.getLong("persone_richieste") - 1)
             partecipaBtn.visibility = View.INVISIBLE
@@ -125,7 +133,7 @@ class EventDetailsActivity : AppCompatActivity() {
 
         annullaBtn.setOnClickListener {
             val docUtente = db.collection("users").document(auth.currentUser!!.email.toString())
-            val eventDoc = db.collection("events").document(evento!!.getString("titolo").toString())
+            val eventDoc = db.collection("events").document(evento.getString("titolo").toString())
             docUtente.update("Miei Eventi", FieldValue.arrayRemove(evento.getString("titolo")))
             eventDoc.update("persone_richieste", evento.getLong("persone_richieste") + 1)
             partecipaBtn.visibility = View.VISIBLE
@@ -135,6 +143,25 @@ class EventDetailsActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
         }
 
+        modificaBtn.setOnClickListener {
+            startActivity(Intent(this, EditEventActivity::class.java))
+        }
+
+        eliminaBtn.setOnClickListener {
+            db.collection("events").document(evento.getString("titolo").toString()).delete()
+                .addOnSuccessListener {
+                    Toast.makeText(this, "Evento eliminato con successo", Toast.LENGTH_SHORT).show()
+                    finish()
+                    startActivity(Intent(this, MyEventsActivity::class.java))
+                }.addOnFailureListener {
+                Toast.makeText(
+                    this,
+                    "Si è verificato un errore durante l'eliminazione dell'evento",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+        }
 
         chiamaBtn.setOnClickListener {
             val phoneUri = "tel:$telefonoCreatore"

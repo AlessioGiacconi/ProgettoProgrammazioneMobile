@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".activity.EditEventActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/mclaren"
+        android:gravity="center"
+        android:text="Effettua le modifiche all'evento"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@id/tv_titolo_evento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_titolo_evento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/mclaren"
+        android:gravity="center"
+        android:hint="@string/caricamento"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@id/rl_evento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <RelativeLayout
+        android:id="@+id/rl_evento"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/evento_layout_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_titolo_evento">
+
+        <ScrollView
+            android:id="@+id/edit_info_evento"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_above="@id/edit_event_fab"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:contentDescription="modifica_info_evento"
+            tools:ignore="HardcodedText">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/edit_data_evento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_edit_data_evento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Data"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_data_evento"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_edit_data_evento"
+                        android:layout_marginStart="120dp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
+                        android:inputType="datetime|date"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/edit_ora_evento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_edit_ora_evento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Ora"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_ora_evento"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_edit_ora_evento"
+                        android:layout_marginStart="120dp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
+                        android:inputType="datetime|time"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/edit_luogo_evento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_edit_luogo_evento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Luogo"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_luogo_evento"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_edit_luogo_evento"
+                        android:layout_marginStart="120dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/edit_ruoli_evento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_edit_ruoli_evento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="Cerchiamo"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <TextView
+                        android:id="@+id/multiselect_edit_ruoli"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_edit_ruoli_evento"
+                        android:layout_marginStart="120dp"
+                        android:layout_marginTop="7dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        app:drawableEndCompat="@drawable/baseline_arrow_drop_down_24" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/edit_numero_giocatori_evento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_edit_numero_giocatori_evento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/mclaren"
+                        android:text="N° Giocatori"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_numero_giocatori_evento"
+                        android:layout_width="488dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignStart="@id/tv_edit_numero_giocatori_evento"
+                        android:layout_marginStart="120dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/edit_descrizione_evento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/layout_form"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tv_edit_descrizione_evento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:fontFamily="@font/mclaren"
+                        android:gravity="center"
+                        android:text="Descrizione"
+                        android:textColor="@color/black"
+                        android:textSize="19sp" />
+
+                    <EditText
+                        android:id="@+id/et_edit_descrizione_evento"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/tv_edit_descrizione_evento"
+                        android:layout_marginTop="5dp"
+                        android:fontFamily="@font/mclaren"
+                        android:hint="@string/caricamento"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLength="400"
+                        android:maxLines="6"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey"
+                        android:textSize="19sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/edit_event_fab"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:elevation="45dp"
+            android:gravity="center|bottom"
+            android:orientation="horizontal">
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/confirm_btn"
+                android:layout_width="180dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/verde_mimetico"
+                android:fontFamily="@font/mclaren"
+                android:gravity="center"
+                android:src="@android:color/transparent"
+                android:text="@string/conferma_modifica"
+                android:textSize="15sp"
+                app:icon="@drawable/calendar_icon" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

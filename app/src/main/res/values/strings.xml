@@ -22,4 +22,5 @@
     <string name="eventi_a_cui_partecipo">Partecipo a…</string>
     <string name="creatore">%1$s %2$s</string>
     <string name="titolo"><b>%1$s</b></string>
+    <string name="elimina">Elimina</string>
 </resources>
