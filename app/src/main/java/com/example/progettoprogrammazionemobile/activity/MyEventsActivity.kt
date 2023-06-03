@@ -28,14 +28,14 @@ class MyEventsActivity : AppCompatActivity() {
             tvTitolo.setText(R.string.eventi_creati)
         })
 
-        attendedEventsButton.setOnClickListener(View.OnClickListener{
+        attendedEventsButton.setOnClickListener(View.OnClickListener {
             replaceFragment(AttendedEventsFragment())
             tvTitolo.setText(R.string.eventi_a_cui_partecipo)
         })
 
     }
 
-    private fun replaceFragment(fragment : Fragment) {
+    private fun replaceFragment(fragment: Fragment) {
 
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_layout, fragment)

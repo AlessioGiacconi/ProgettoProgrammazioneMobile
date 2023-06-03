@@ -17,11 +17,11 @@ import com.google.firebase.firestore.QuerySnapshot
 
 class SearchEventActivity : AppCompatActivity() {
 
-    private lateinit var recyclerView : RecyclerView
-    private lateinit var searchBar : androidx.appcompat.widget.SearchView
-    private lateinit var eventArrayList : ArrayList<EventDataClass>
-    private lateinit var cardAdapter : RecyclerViewAdapter
-    private lateinit var db : FirebaseFirestore
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchBar: androidx.appcompat.widget.SearchView
+    private lateinit var eventArrayList: ArrayList<EventDataClass>
+    private lateinit var cardAdapter: RecyclerViewAdapter
+    private lateinit var db: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_event)
@@ -40,10 +40,11 @@ class SearchEventActivity : AppCompatActivity() {
 
         showAllEvents()
 
-        searchBar.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
+        searchBar.setOnQueryTextListener(object :
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 eventArrayList.clear()
-                if(query == ""){
+                if (query == "") {
                     showAllEvents()
                 } else {
                     showFilteredEvents(query)
@@ -53,7 +54,7 @@ class SearchEventActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 eventArrayList.clear()
-                if(newText == ""){
+                if (newText == "") {
                     showAllEvents()
                 } else {
                     showFilteredEvents(newText)
@@ -68,16 +69,16 @@ class SearchEventActivity : AppCompatActivity() {
     private fun showAllEvents() {
 
         db = FirebaseFirestore.getInstance()
-        db.collection("events").addSnapshotListener(object: EventListener<QuerySnapshot>{
+        db.collection("events").addSnapshotListener(object : EventListener<QuerySnapshot> {
 
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if(error != null){
+                if (error != null) {
                     Log.e("Firestore Error", error.message.toString())
                     return
                 }
-                for(dc : DocumentChange in value?.documentChanges!!){
+                for (dc: DocumentChange in value?.documentChanges!!) {
 
-                    if(dc.type == DocumentChange.Type.ADDED){
+                    if (dc.type == DocumentChange.Type.ADDED) {
                         Log.d("SearchActivity", "sono qui")
                         Log.d("SearchActivity", dc.document.data.toString())
                         eventArrayList.add(dc.document.toObject(EventDataClass::class.java))
@@ -92,16 +93,16 @@ class SearchEventActivity : AppCompatActivity() {
 
     private fun showFilteredEvents(query: String?) {
         db = FirebaseFirestore.getInstance()
-        db.collection("events").addSnapshotListener(object: EventListener<QuerySnapshot>{
+        db.collection("events").addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                if(error != null){
+                if (error != null) {
                     Log.e("Firestoer Error", error.message.toString())
                     return
                 }
-                for(dc : DocumentChange in value?.documentChanges!!){
-                    if(dc.type == DocumentChange.Type.ADDED){
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
                         val filteredEvent = dc.document.toObject(EventDataClass::class.java)
-                        if(filteredEvent.luogo.toString().contains(query!!, ignoreCase = true))
+                        if (filteredEvent.luogo.toString().contains(query!!, ignoreCase = true))
                             eventArrayList.add(filteredEvent)
                     }
                 }

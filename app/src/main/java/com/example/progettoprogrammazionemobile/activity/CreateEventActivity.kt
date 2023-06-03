@@ -28,12 +28,12 @@ import java.util.Locale
 
 class CreateEventActivity : AppCompatActivity() {
 
-    lateinit var scegliData : EditText
-    lateinit var scegliOra : EditText
+    lateinit var scegliData: EditText
+    lateinit var scegliOra: EditText
     private var cal = Calendar.getInstance()
     lateinit var scegliRuoli: TextView
     lateinit var numeroGiocatori: Slider
-    lateinit var descrizione : EditText
+    lateinit var descrizione: EditText
 
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
@@ -66,7 +66,16 @@ class CreateEventActivity : AppCompatActivity() {
 
         // blocco che gestisce il time picker
         mTimePicker = TimePickerDialog(this,
-            { view, hourOfDay, minute -> scegliOra.setText(String.format("%d : %d", hourOfDay, minute)) }, hour, minute, true)
+            { view, hourOfDay, minute ->
+                scegliOra.setText(
+                    String.format(
+                        "%d : %d",
+                        hourOfDay,
+                        minute
+                    )
+                )
+            }, hour, minute, true
+        )
 
         scegliOra.setOnClickListener { v ->
             mTimePicker.show()
@@ -82,30 +91,37 @@ class CreateEventActivity : AppCompatActivity() {
             }
 
         scegliData.setOnClickListener(View.OnClickListener {
-            DatePickerDialog(this, dateSetListener, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)).show()
+            DatePickerDialog(
+                this,
+                dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)
+            ).show()
         })
 
         // blocco che gestisce l'apertura del dialog per selezionare i ruoli
-        scegliRuoli.setOnClickListener{
+        scegliRuoli.setOnClickListener {
 
             scegliRuoli.text = ""
             val builderRuoli = AlertDialog.Builder(this)
             builderRuoli.setTitle("Scegli i ruoli")
-            builderRuoli.setMultiChoiceItems(listRoles, checkedRoles){ dialog, which, isChecked ->
+            builderRuoli.setMultiChoiceItems(listRoles, checkedRoles) { dialog, which, isChecked ->
                 checkedRoles[which] = isChecked
                 val currentRole = selectedRoles[which]
             }
 
             builderRuoli.setCancelable(false)
-            builderRuoli.setPositiveButton("FATTO"){ dialog, which ->
-                for (i in checkedRoles.indices){
-                    if (checkedRoles[i]){
-                        scegliRuoli.text = String.format("%s%s ", scegliRuoli.text, selectedRoles[i])
+            builderRuoli.setPositiveButton("FATTO") { dialog, which ->
+                for (i in checkedRoles.indices) {
+                    if (checkedRoles[i]) {
+                        scegliRuoli.text =
+                            String.format("%s%s ", scegliRuoli.text, selectedRoles[i])
                     }
                 }
             }
-            builderRuoli.setNegativeButton("INDIETRO"){dialog, which ->}
-            builderRuoli.setNeutralButton("CANCELLA"){ dialog: DialogInterface?, which: Int ->
+            builderRuoli.setNegativeButton("INDIETRO") { dialog, which -> }
+            builderRuoli.setNeutralButton("CANCELLA") { dialog: DialogInterface?, which: Int ->
                 Arrays.fill(checkedRoles, false)
             }
             builderRuoli.create()
@@ -122,8 +138,11 @@ class CreateEventActivity : AppCompatActivity() {
 
 
         conferma.setOnClickListener(View.OnClickListener {
-            if(scegliData.text.toString().isNotEmpty() && scegliOra.text.toString().isNotEmpty() && scegliLuogo.text.toString().isNotEmpty() && scegliRuoli.text.toString().isNotEmpty()
-                && descrizione.text.toString().isNotEmpty()){
+            if (scegliData.text.toString().isNotEmpty() && scegliOra.text.toString()
+                    .isNotEmpty() && scegliLuogo.text.toString()
+                    .isNotEmpty() && scegliRuoli.text.toString().isNotEmpty()
+                && descrizione.text.toString().isNotEmpty()
+            ) {
                 val event = hashMapOf(
                     "creatore" to auth.currentUser!!.email.toString(),
                     "titolo" to titolo.text.toString(),
@@ -136,21 +155,22 @@ class CreateEventActivity : AppCompatActivity() {
                 )
                 Log.d("CreateActivity", "ok")
                 Log.d("CreateActivity", "Event hash map:$event")
-                db.collection("events").document(event["titolo"].toString()).set(event).addOnSuccessListener {
-                    showMessage("Evento creato con successo")
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
-                }.addOnFailureListener {
+                db.collection("events").document(event["titolo"].toString()).set(event)
+                    .addOnSuccessListener {
+                        showMessage("Evento creato con successo")
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    }.addOnFailureListener {
                     showMessage("Qualcosa è andato storto...")
                 }
-            }else{
-              showMessage("Compila tutti i campi per pubblicare il nuovo evento")
+            } else {
+                showMessage("Compila tutti i campi per pubblicare il nuovo evento")
             }
         })
 
     }
 
-    private fun updateDateInView(){
+    private fun updateDateInView() {
         val myFormat = "dd.MM.yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
         scegliData.setText(sdf.format(cal.time))

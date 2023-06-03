@@ -56,17 +56,17 @@ class CreatedEventsFragment : Fragment() {
 
     private fun eventChangeListener() {
         db = FirebaseFirestore.getInstance()
-        db.collection("events").addSnapshotListener(object: EventListener<QuerySnapshot>{
-            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?){
-                if(error != null){
+        db.collection("events").addSnapshotListener(object : EventListener<QuerySnapshot> {
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                if (error != null) {
                     Log.e("Firestore Error", error.message.toString())
                     return
                 }
-                for(dc : DocumentChange in value?.documentChanges!!){
-                    if(dc.type == DocumentChange.Type.ADDED){
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
                         val createdEvent = dc.document.toObject(EventDataClass::class.java)
                         Log.d("Fragment", "Event:$createdEvent")
-                        if(createdEvent.creatore == auth.currentUser!!.email){
+                        if (createdEvent.creatore == auth.currentUser!!.email) {
                             createdEventsArrayList.add(createdEvent)
                         }
                     }

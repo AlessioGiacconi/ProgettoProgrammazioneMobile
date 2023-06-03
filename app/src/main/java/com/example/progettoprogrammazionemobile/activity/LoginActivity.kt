@@ -29,19 +29,24 @@ class LoginActivity : AppCompatActivity() {
         val email = findViewById<EditText>(R.id.email)
         val password = findViewById<EditText>(R.id.password)
 
-        login_btn.setOnClickListener{
-            if(email.text.toString().isEmpty() || password.text.toString().isEmpty()){
+        login_btn.setOnClickListener {
+            if (email.text.toString().isEmpty() || password.text.toString().isEmpty()) {
                 Toast.makeText(this, "Inserire le credenziali", Toast.LENGTH_SHORT).show()
-            }else{
-                auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString()).addOnCompleteListener(this){ task ->
-                    if (task.isSuccessful){
-                        Log.d("LoginActivity", "accesso  eseguito")
-                        updateUI()
-                    } else {
-                        Log.w("LoginActivity", "accesso fallito", task.exception)
-                        Toast.makeText(this, "Autenticazione fallita, riprova", Toast.LENGTH_SHORT).show()
+            } else {
+                auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Log.d("LoginActivity", "accesso  eseguito")
+                            updateUI()
+                        } else {
+                            Log.w("LoginActivity", "accesso fallito", task.exception)
+                            Toast.makeText(
+                                this,
+                                "Autenticazione fallita, riprova",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                }
             }
 
         }

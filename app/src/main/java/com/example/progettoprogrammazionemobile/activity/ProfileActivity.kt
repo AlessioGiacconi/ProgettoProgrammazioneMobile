@@ -28,14 +28,13 @@ class ProfileActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private val db = Firebase.firestore
-    private lateinit var storageRef : StorageReference
+    private lateinit var storageRef: StorageReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
         auth = Firebase.auth
         storageRef = FirebaseStorage.getInstance().reference.child("profileImages")
-
 
 
         val profileImage = findViewById<ImageView>(R.id.imageView)
@@ -47,11 +46,11 @@ class ProfileActivity : AppCompatActivity() {
         val dataDiNascita = findViewById<TextView>(R.id.data_nascita_utente)
         val email = findViewById<TextView>(R.id.email_utente)
 
-        var loggedUser : UserDataClass
+        var loggedUser: UserDataClass
 
         val fabEdit = findViewById<ExtendedFloatingActionButton>(R.id.edit_btn)
 
-        if(auth.currentUser != null) {
+        if (auth.currentUser != null) {
             db.collection("users").document(auth.currentUser!!.email.toString()).get()
                 .addOnSuccessListener { doc ->
                     loggedUser = UserDataClass(
@@ -73,15 +72,16 @@ class ProfileActivity : AppCompatActivity() {
                     sesso.text = loggedUser.sesso
                     ruolo.text = loggedUser.ruolo
                     email.text = loggedUser.email
-                    if (loggedUser.profile_img != ""){
+                    if (loggedUser.profile_img != "") {
                         Glide.with(this).load(loggedUser.profile_img).into(profileImage)
-                    }else{
+                    } else {
                         profileImage.setImageResource(R.drawable.icona_profilo)
                         Log.d("ProfileActivity", profileImage.toString())
                     }
                 }.addOnFailureListener {
-                Toast.makeText(this, "Errore di comunicazione col database", Toast.LENGTH_SHORT).show()
-            }
+                    Toast.makeText(this, "Errore di comunicazione col database", Toast.LENGTH_SHORT)
+                        .show()
+                }
         }
 
         fabEdit.setOnClickListener(View.OnClickListener {

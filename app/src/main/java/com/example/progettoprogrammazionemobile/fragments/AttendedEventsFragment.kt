@@ -32,9 +32,7 @@ class AttendedEventsFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var userEventList: ArrayList<*>
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         fragmentView = inflater.inflate(R.layout.fragment_attended_events, container, false)

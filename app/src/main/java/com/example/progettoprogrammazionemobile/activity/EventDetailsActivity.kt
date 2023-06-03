@@ -144,7 +144,10 @@ class EventDetailsActivity : AppCompatActivity() {
         }
 
         modificaBtn.setOnClickListener {
-            startActivity(Intent(this, EditEventActivity::class.java))
+            val modificaIntent = Intent(this, EditEventActivity::class.java)
+            modificaIntent.putExtra("titolo evento", evento.getString("titolo"))
+            startActivity(modificaIntent)
+
         }
 
         eliminaBtn.setOnClickListener {
@@ -154,12 +157,12 @@ class EventDetailsActivity : AppCompatActivity() {
                     finish()
                     startActivity(Intent(this, MyEventsActivity::class.java))
                 }.addOnFailureListener {
-                Toast.makeText(
-                    this,
-                    "Si è verificato un errore durante l'eliminazione dell'evento",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
+                    Toast.makeText(
+                        this,
+                        "Si è verificato un errore durante l'eliminazione dell'evento",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
 
         }
 

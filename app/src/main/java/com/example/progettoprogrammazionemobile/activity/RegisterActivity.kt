@@ -55,9 +55,11 @@ class RegisterActivity : AppCompatActivity() {
 
         val sesso = listOf("Maschio", "Femmina")
         val ruolo = listOf("Attaccante", "Difensore", "Portiere")
-        val autoCompleteSesso : AutoCompleteTextView = findViewById(R.id.Autocomplete_text_view_sesso)
+        val autoCompleteSesso: AutoCompleteTextView =
+            findViewById(R.id.Autocomplete_text_view_sesso)
         val adapterSesso = ArrayAdapter(this, R.layout.dropdown_item, sesso)
-        val autoCompleteRuolo : AutoCompleteTextView = findViewById(R.id.Autocomplete_text_view_ruolo)
+        val autoCompleteRuolo: AutoCompleteTextView =
+            findViewById(R.id.Autocomplete_text_view_ruolo)
         val adapterRuolo = ArrayAdapter(this, R.layout.dropdown_item, ruolo)
         autoCompleteSesso.setAdapter(adapterSesso)
         autoCompleteRuolo.setAdapter(adapterRuolo)
@@ -78,17 +80,17 @@ class RegisterActivity : AppCompatActivity() {
         val userConfermaPassword = findViewById<EditText>(R.id.et_Conferma_password)
         imgProfilePhoto = findViewById(R.id.photoImageView)
 
-        autoCompleteSesso.onItemClickListener = AdapterView.OnItemClickListener{
-                adapterView, _, i, _ ->
+        autoCompleteSesso.onItemClickListener =
+            AdapterView.OnItemClickListener { adapterView, _, i, _ ->
 
-              userSesso = adapterView.getItemAtPosition(i) as String
-        }
+                userSesso = adapterView.getItemAtPosition(i) as String
+            }
 
-        autoCompleteRuolo.onItemClickListener = AdapterView.OnItemClickListener{
-            adapterView, view, i, l ->
+        autoCompleteRuolo.onItemClickListener =
+            AdapterView.OnItemClickListener { adapterView, view, i, l ->
 
-             userRuolo = adapterView.getItemAtPosition(i) as String
-        }
+                userRuolo = adapterView.getItemAtPosition(i) as String
+            }
 
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
@@ -109,24 +111,28 @@ class RegisterActivity : AppCompatActivity() {
         })
 
         imgProfilePhoto.setOnClickListener(View.OnClickListener {
-                if (Build.VERSION.SDK_INT >= 22){
-                    checkAndRequestForPermission()
-                }
-                else {
-                    openGallery()
-                }
+            if (Build.VERSION.SDK_INT >= 22) {
+                checkAndRequestForPermission()
+            } else {
+                openGallery()
+            }
         })
 
 
 
-        registrati.setOnClickListener(View.OnClickListener{
+        registrati.setOnClickListener(View.OnClickListener {
             registrati.visibility = View.INVISIBLE
             loadingProgress.visibility = View.VISIBLE
 
-            if( userNome.text.toString().isNotEmpty() && userCognome.text.toString().isNotEmpty() && userTelefono.text.toString().isNotEmpty() &&
-                userDataDiNascita.text.toString().isNotEmpty() && userSesso.isNotEmpty() && userRuolo.isNotEmpty() && userEmail.text.toString().isNotEmpty() &&
-                userPassword.text.toString().isNotEmpty() && userConfermaPassword.text.toString().isNotEmpty() ) {
-                if(userPassword.text.toString().length >= 8 && userPassword.text.toString() == userConfermaPassword.text.toString()){
+            if (userNome.text.toString().isNotEmpty() && userCognome.text.toString()
+                    .isNotEmpty() && userTelefono.text.toString().isNotEmpty() &&
+                userDataDiNascita.text.toString()
+                    .isNotEmpty() && userSesso.isNotEmpty() && userRuolo.isNotEmpty() && userEmail.text.toString()
+                    .isNotEmpty() &&
+                userPassword.text.toString().isNotEmpty() && userConfermaPassword.text.toString()
+                    .isNotEmpty()
+            ) {
+                if (userPassword.text.toString().length >= 8 && userPassword.text.toString() == userConfermaPassword.text.toString()) {
                     val user = hashMapOf(
                         "Nome" to userNome.text.toString(),
                         "Cognome" to userCognome.text.toString(),
@@ -143,7 +149,7 @@ class RegisterActivity : AppCompatActivity() {
                     registrati.visibility = View.INVISIBLE
                     loadingProgress.visibility = View.VISIBLE
                 } else {
-                    if(userPassword.text.toString().length < 8){
+                    if (userPassword.text.toString().length < 8) {
                         showMessage("Password deve contenere almeno 8 caratteri")
                         registrati.visibility = View.VISIBLE
                         loadingProgress.visibility = View.INVISIBLE
@@ -153,8 +159,7 @@ class RegisterActivity : AppCompatActivity() {
                         loadingProgress.visibility = View.INVISIBLE
                     }
                 }
-            }
-            else {
+            } else {
                 showMessage("Ricontrolla di aver inserito tutti i campi")
                 registrati.visibility = View.VISIBLE
                 loadingProgress.visibility = View.INVISIBLE
@@ -168,29 +173,33 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun createUserAccount(user: HashMap<String, String>) {
-        auth.createUserWithEmailAndPassword(user["Email"].toString(), user["Password"].toString()).addOnCompleteListener{ task ->
-            if(task.isSuccessful){
-                Log.d("RegisterActivity", "Succesfully created user with uid: ${task.result.user?.uid}")
-                uploadImageToFirebaseStorage(user)
+        auth.createUserWithEmailAndPassword(user["Email"].toString(), user["Password"].toString())
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d(
+                        "RegisterActivity",
+                        "Succesfully created user with uid: ${task.result.user?.uid}"
+                    )
+                    uploadImageToFirebaseStorage(user)
+                }
             }
-        }
     }
 
     private fun uploadImageToFirebaseStorage(user: HashMap<String, String>) {
         Log.d("RegisterActivity", "Sono nella funzione, pickedImageUri: $pickedImage")
-        if(pickedImage == null) {
+        if (pickedImage == null) {
             user["Immagine Profilo"] = ""
             Log.d("RegisterActivity", "User hash map:$user")
             saveUserToFirebaseDatabase(user)
-        }
-        else {
+        } else {
             val email = user["Email"].toString()
-            val storageReference = FirebaseStorage.getInstance().getReference("/profileImages/$email")
+            val storageReference =
+                FirebaseStorage.getInstance().getReference("/profileImages/$email")
 
             storageReference.putFile(pickedImage!!).addOnSuccessListener {
                 Log.d("RegisterActivity", "Image succesfully in storage: ${it.metadata?.path}")
 
-                storageReference.downloadUrl.addOnSuccessListener { it->
+                storageReference.downloadUrl.addOnSuccessListener { it ->
                     it.toString()
                     Log.d("RegisterActivity", "File Location:$it")
                     user["Immagine Profilo"] = it.toString()
@@ -212,7 +221,8 @@ class RegisterActivity : AppCompatActivity() {
             Log.d("RegisterActivity", "Qualcosa è andato storto")
         }
     }
-    private fun updateUI(){
+
+    private fun updateUI() {
         val mainActivity = Intent(this, MainActivity::class.java)
         startActivity(mainActivity)
         finish()
@@ -222,47 +232,57 @@ class RegisterActivity : AppCompatActivity() {
         Toast.makeText(this, messaggio, Toast.LENGTH_LONG).show()
     }
 
-    private fun checkAndRequestForPermission(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)){
+    private fun checkAndRequestForPermission() {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(
+                    this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                )
+            ) {
                 showMessage("È necessario accettare i permessi per continuare")
+            } else {
+                ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                    PReqCode
+                )
             }
-            else{
-                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),PReqCode)
-            }
-        }
-        else{
+        } else {
             openGallery()
         }
 
     }
 
     private fun openGallery() {
-        val photoPickerIntent =  Intent(Intent.ACTION_PICK)
+        val photoPickerIntent = Intent(Intent.ACTION_PICK)
         photoPickerIntent.type = "image/*"
         pickPhotoActivityResultLauncher.launch(photoPickerIntent)
     }
 
     private val pickPhotoActivityResultLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                Log.d("RegisterActivity", "Photo was selected")
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            Log.d("RegisterActivity", "Photo was selected")
 
-                val data = result.data
-                val selectedImage: Uri? = data?.data
-                var imageStream: InputStream? = null
-                try {
-                    imageStream = contentResolver.openInputStream(selectedImage!!)
-                } catch (e: FileNotFoundException) {
-                    e.printStackTrace()
-                }
-                BitmapFactory.decodeStream(imageStream)
-                pickedImage = data?.data
-                imgProfilePhoto.setImageURI(selectedImage)
-
+            val data = result.data
+            val selectedImage: Uri? = data?.data
+            var imageStream: InputStream? = null
+            try {
+                imageStream = contentResolver.openInputStream(selectedImage!!)
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
             }
+            BitmapFactory.decodeStream(imageStream)
+            pickedImage = data?.data
+            imgProfilePhoto.setImageURI(selectedImage)
+
         }
+    }
 
     private fun updateDateInView() {
         val myFormat = "dd.MM.yyyy"

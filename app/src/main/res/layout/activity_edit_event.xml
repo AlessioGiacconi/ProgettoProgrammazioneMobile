@@ -249,8 +249,9 @@
                         android:layout_alignStart="@id/tv_edit_numero_giocatori_evento"
                         android:layout_marginStart="120dp"
                         android:fontFamily="@font/mclaren"
+                        android:gravity="center"
                         android:hint="@string/caricamento"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:textColor="@color/black"
                         android:textColorHint="@color/grey"
                         android:textSize="19sp" />
