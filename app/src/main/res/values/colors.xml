@@ -13,5 +13,7 @@
     <color name="grey">#808080</color>
     <color name="verde_acqua">#26AE68</color>
     <color name="verde">#49A533</color>
+    <color name="verde_quasi_scuro">#1ECA00</color>
+    <color name="verde_logo">#32800F</color>
     <color name="rosso">#E82B2B</color>
 </resources>

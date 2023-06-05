@@ -7,31 +7,24 @@
     android:background="@color/tè_verde"
     tools:context=".activity.LoginActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_logo"
         android:layout_width="match_parent"
-        android:layout_height="229dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="175dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:alpha="0.9"
+        android:elevation="40dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/layout_logo"
-            android:contentDescription="@string/logo"
-            app:layout_constraintBottom_toBottomOf="@id/frameLayout"
-            app:layout_constraintEnd_toEndOf="@id/frameLayout"
-            app:layout_constraintStart_toStartOf="@id/frameLayout"
-            app:layout_constraintTop_toTopOf="@id/frameLayout"
-            app:srcCompat="@drawable/meetkick_logo" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
+        app:srcCompat="@drawable/meetkick_logo"
+        app:strokeColor="@color/verde"
+        app:strokeWidth="10dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -48,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo"
         app:layout_constraintVertical_bias="0.552">
 
         <TextView

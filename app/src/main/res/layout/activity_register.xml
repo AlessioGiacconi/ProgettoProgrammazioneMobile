@@ -12,37 +12,23 @@
         android:background="@color/tè_verde"
         tools:context=".activity.RegisterActivity">
 
-        <FrameLayout
-            android:id="@+id/frameLayout2"
-            android:layout_width="265dp"
-            android:layout_height="148dp"
-            android:layout_marginEnd="2dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintEnd_toStartOf="@id/photoImageView"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="140dp"
+            android:alpha="0.9"
+            android:elevation="40dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@id/linearLayout"
+            app:layout_constraintEnd_toStartOf="@+id/photoImageView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
-
-
-            <ImageView
-                android:id="@+id/logo_Meet_Kick"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/layout_logo"
-                android:clickable="true"
-                android:contentDescription="@string/logo"
-                android:focusable="true"
-                app:layout_constraintBottom_toBottomOf="@id/frameLayout2"
-                app:layout_constraintEnd_toEndOf="@id/frameLayout2"
-                app:layout_constraintStart_toStartOf="@id/frameLayout2"
-                app:layout_constraintTop_toTopOf="@id/frameLayout2"
-                app:srcCompat="@drawable/meetkick_logo" />
-        </FrameLayout>
+            app:shapeAppearanceOverlay="@style/ImageStyle_Corners_Rounded"
+            app:srcCompat="@drawable/meetkick_logo"
+            app:strokeColor="@color/verde"
+            app:strokeWidth="10dp" />
 
 
         <LinearLayout
@@ -50,8 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginTop="160dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginBottom="210dp"
             android:background="@drawable/layout_bg"
             android:gravity="center"
@@ -518,8 +504,9 @@
             android:id="@+id/photoImageView"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginStart="5dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="20dp"
             android:clickable="true"
             android:contentDescription="profile_image"
             android:focusable="true"
@@ -528,9 +515,10 @@
             app:civ_shadow="true"
             app:civ_shadow_color="@color/verde"
             app:civ_shadow_radius="7dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/frameLayout2"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/icona_profilo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
