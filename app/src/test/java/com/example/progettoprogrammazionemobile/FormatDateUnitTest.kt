@@ -13,8 +13,6 @@ import java.util.Locale
 class FormatDateUnitTest {
 
     private var cal = Calendar.getInstance()
-
-
     @Before
     fun setUp(){
         cal.set(Calendar.YEAR, 2023)
