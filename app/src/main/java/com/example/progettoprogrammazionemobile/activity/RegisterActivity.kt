@@ -294,10 +294,5 @@ class RegisterActivity : AppCompatActivity() {
 
         }
     }
-
-    private fun updateDateInView(): SimpleDateFormat {
-        val myFormat = "dd.MM.yyyy"
-        return SimpleDateFormat(myFormat, Locale.ITALY)
-    }
 }
 
