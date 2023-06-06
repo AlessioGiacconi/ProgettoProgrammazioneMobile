@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide
 import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
 import com.example.progettoprogrammazionemobile.data_class.UserDataClass
+import com.example.progettoprogrammazionemobile.utils.Utils
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -88,7 +89,9 @@ class EditProfileActivity : AppCompatActivity() {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateDateInView()
+                val formatDate = Utils()
+                val date = formatDate.updateDateInView()
+                dateEdit.setText(date.format(cal.time))
             }
 
         dateEdit.setOnClickListener(View.OnClickListener {
@@ -251,14 +254,6 @@ class EditProfileActivity : AppCompatActivity() {
         }
 
     }
-
-
-    private fun updateDateInView() {
-        val myFormat = "dd.MM.yyyy"
-        val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
-        dateEdit.setText(sdf.format(cal.time))
-    }
-
     private fun openGallery() {
         val photoPickerIntent = Intent(Intent.ACTION_PICK)
         photoPickerIntent.type = "image/*"

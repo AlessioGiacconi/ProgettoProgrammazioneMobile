@@ -26,6 +26,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
+import com.example.progettoprogrammazionemobile.utils.Utils
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -105,7 +106,9 @@ class RegisterActivity : AppCompatActivity() {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateDateInView()
+                val formatDate = Utils()
+                val date = formatDate.updateDateInView()
+                userDataDiNascita.setText(date.format(cal.time))
             }
 
         userDataDiNascita.setOnClickListener(View.OnClickListener {
@@ -180,7 +183,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-    private fun createUserAccount(user: HashMap<String, String>) {
+     fun createUserAccount(user: HashMap<String, String>) {
         auth.createUserWithEmailAndPassword(user["Email"].toString(), user["Password"].toString())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -292,10 +295,9 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateDateInView() {
+    private fun updateDateInView(): SimpleDateFormat {
         val myFormat = "dd.MM.yyyy"
-        val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
-        userDataDiNascita.setText(sdf.format(cal.time))
+        return SimpleDateFormat(myFormat, Locale.ITALY)
     }
 }
 

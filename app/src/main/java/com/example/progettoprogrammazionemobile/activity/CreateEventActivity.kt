@@ -16,6 +16,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
+import com.example.progettoprogrammazionemobile.utils.Utils
 import com.google.android.material.slider.Slider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -81,13 +82,15 @@ class CreateEventActivity : AppCompatActivity() {
             mTimePicker.show()
         }
 
+
         // blocco che gestisce il date picker
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                val date = updateDateInView()
+                val formatDate = Utils()
+                val date = formatDate.updateDateInView()
                 scegliData.setText(date.format(cal.time))
             }
 
@@ -170,14 +173,6 @@ class CreateEventActivity : AppCompatActivity() {
         })
 
     }
-
-    private fun updateDateInView(): SimpleDateFormat {
-        val myFormat = "dd.MM.yyyy"
-        val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
-        return sdf
-        //scegliData.setText(sdf.format(cal.time))
-    }
-
     private fun showMessage(messaggio: String) {
         Toast.makeText(this, messaggio, Toast.LENGTH_LONG).show()
     }

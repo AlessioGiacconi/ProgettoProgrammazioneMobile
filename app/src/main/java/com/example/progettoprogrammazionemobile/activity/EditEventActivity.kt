@@ -15,6 +15,7 @@ import android.widget.Toast
 import com.example.progettoprogrammazionemobile.MainActivity
 import com.example.progettoprogrammazionemobile.R
 import com.example.progettoprogrammazionemobile.data_class.EventDataClass
+import com.example.progettoprogrammazionemobile.utils.Utils
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -31,6 +32,7 @@ class EditEventActivity : AppCompatActivity() {
     lateinit var nuoviRuoli: TextView
     private val db = Firebase.firestore
     private lateinit var selectedEvent: EventDataClass
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_event)
@@ -77,7 +79,9 @@ class EditEventActivity : AppCompatActivity() {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateDateInView()
+                val formatDate = Utils()
+                val date = formatDate.updateDateInView()
+                nuovaData.setText(date.format(cal.time))
             }
 
         nuovaData.setOnClickListener(View.OnClickListener {
@@ -186,11 +190,4 @@ class EditEventActivity : AppCompatActivity() {
         })
 
     }
-
-    private fun updateDateInView() {
-        val myFormat = "dd.MM.yyyy"
-        val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
-        nuovaData.setText(sdf.format(cal.time))
-    }
-
 }
