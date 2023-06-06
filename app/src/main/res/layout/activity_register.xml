@@ -203,12 +203,16 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:endIconTint="@color/grey"
                     android:layout_marginStart="30dp">
 
                     <AutoCompleteTextView
                         android:id="@+id/Autocomplete_text_view_ruolo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:longClickable="false"
                         android:background="@drawable/layout_form"
                         android:fontFamily="@font/mclaren"
                         android:inputType="text"
@@ -244,12 +248,16 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:endIconTint="@color/grey"
                     android:layout_marginStart="30dp">
 
                     <AutoCompleteTextView
                         android:id="@+id/Autocomplete_text_view_sesso"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:longClickable="false"
                         android:background="@drawable/layout_form"
                         android:fontFamily="@font/mclaren"
                         android:inputType="text"

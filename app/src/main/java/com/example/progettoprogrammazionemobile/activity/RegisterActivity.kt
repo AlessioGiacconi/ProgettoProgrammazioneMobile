@@ -92,6 +92,14 @@ class RegisterActivity : AppCompatActivity() {
                 userRuolo = adapterView.getItemAtPosition(i) as String
             }
 
+        autoCompleteRuolo.setOnClickListener{
+            autoCompleteRuolo.setText("")
+        }
+
+        autoCompleteSesso.setOnClickListener {
+            autoCompleteSesso.setText("")
+        }
+
         val dateSetListener =
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 cal.set(Calendar.YEAR, year)
@@ -210,7 +218,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    private fun saveUserToFirebaseDatabase(user: HashMap<String, String>) {
+     fun saveUserToFirebaseDatabase(user: HashMap<String, String>) {
         Log.d("RegisterActivity", "Sono qui")
         db.collection("users").document(user["Email"].toString()).set(user).addOnSuccessListener {
             Log.d("RegisterActivity", "Utente registrato sul db")

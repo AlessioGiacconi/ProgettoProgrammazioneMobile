@@ -15,11 +15,16 @@
         <item name="android:forceDarkAllowed" tools:targetApi="q">true</item>
         <item name="actionBarStyle">@style/actionbar.light</item>
         <item name="displayOptions">showTitle</item>
-        <item name="android:colorForeground">@color/white</item>
+        <item name="autoCompleteTextViewStyle">@style/SearchAutoCompleteTextView</item>
     </style>
 
     <style name="actionbar.light" parent="Widget.AppCompat.Toolbar.Button.Navigation">
         <item name="background">@color/verde_logo</item>
     </style>
+
+    <style name="SearchAutoCompleteTextView" parent="Widget.AppCompat.Light.AutoCompleteTextView">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 
 </resources>

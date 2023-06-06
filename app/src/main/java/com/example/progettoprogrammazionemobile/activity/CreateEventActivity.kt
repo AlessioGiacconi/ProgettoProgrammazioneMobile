@@ -87,7 +87,8 @@ class CreateEventActivity : AppCompatActivity() {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, monthOfYear)
                 cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-                updateDateInView()
+                val date = updateDateInView()
+                scegliData.setText(date.format(cal.time))
             }
 
         scegliData.setOnClickListener(View.OnClickListener {
@@ -170,10 +171,11 @@ class CreateEventActivity : AppCompatActivity() {
 
     }
 
-    private fun updateDateInView() {
+    private fun updateDateInView(): SimpleDateFormat {
         val myFormat = "dd.MM.yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.ITALY)
-        scegliData.setText(sdf.format(cal.time))
+        return sdf
+        //scegliData.setText(sdf.format(cal.time))
     }
 
     private fun showMessage(messaggio: String) {

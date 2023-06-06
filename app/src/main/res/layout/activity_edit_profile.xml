@@ -209,6 +209,8 @@
                         android:layout_width="488dp"
                         android:layout_height="match_parent"
                         android:layout_alignStart="@+id/tv_ruolo"
+                        app:endIconTint="@color/grey"
+                        app:boxStrokeColor="@color/black"
                         android:layout_marginStart="110dp">
 
                         <AutoCompleteTextView
@@ -254,6 +256,8 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="488dp"
                         android:layout_height="match_parent"
+                        app:endIconTint="@color/grey"
+                        app:boxStrokeColor="@color/black"
                         android:layout_alignStart="@+id/tv_sesso"
                         android:layout_marginStart="110dp">
 
