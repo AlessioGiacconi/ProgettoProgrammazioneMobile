@@ -34,9 +34,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import java.io.FileNotFoundException
 import java.io.InputStream
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -152,9 +150,11 @@ class RegisterActivity : AppCompatActivity() {
                         "Sesso" to userSesso,
                         "Ruolo" to userRuolo,
                         "Email" to userEmail.text.toString(),
-                        "Password" to userPassword.text.toString()
+                        "Password" to userPassword.text.toString(),
+                        "Miei Eventi" to listOf<String>()
                     )
                     Log.d("RegisterActivity", "Email:" + userEmail.text.toString())
+                    Log.d("REGISTER", user["Miei Eventi"].toString())
                     Log.d("RegisterActivity", "Password: " + userPassword.text.toString())
                     createUserAccount(user)
                     registrati.visibility = View.INVISIBLE
@@ -183,7 +183,7 @@ class RegisterActivity : AppCompatActivity() {
 
     }
 
-     fun createUserAccount(user: HashMap<String, String>) {
+     fun createUserAccount(user: HashMap<String, Any>) {
         auth.createUserWithEmailAndPassword(user["Email"].toString(), user["Password"].toString())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -196,7 +196,7 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
-    private fun uploadImageToFirebaseStorage(user: HashMap<String, String>) {
+    private fun uploadImageToFirebaseStorage(user: HashMap<String, Any>) {
         Log.d("RegisterActivity", "Sono nella funzione, pickedImageUri: $pickedImage")
         if (pickedImage == null) {
             user["Immagine Profilo"] = ""
@@ -221,7 +221,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-     fun saveUserToFirebaseDatabase(user: HashMap<String, String>) {
+     fun saveUserToFirebaseDatabase(user: HashMap<String, Any>) {
         Log.d("RegisterActivity", "Sono qui")
         db.collection("users").document(user["Email"].toString()).set(user).addOnSuccessListener {
             Log.d("RegisterActivity", "Utente registrato sul db")

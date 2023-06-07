@@ -9,5 +9,6 @@ data class UserDataClass(
     val ruolo: String,
     val email: String,
     val password: String,
-    val profile_img: String
+    val profile_img: String,
+    val miei_eventi: List<String>? = null
 )
