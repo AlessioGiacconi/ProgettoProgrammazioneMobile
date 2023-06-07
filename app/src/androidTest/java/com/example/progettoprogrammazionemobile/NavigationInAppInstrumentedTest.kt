@@ -35,7 +35,6 @@ class NavigationInAppInstrumentedTest {
         onView(withId(R.id.crea_evento)).perform(click())
         onView(withId(R.id.sv_new_event)).check(matches(isDisplayed()))
 
-        Thread.sleep(1000)
         pressBack()
 
         onView(withId(R.id.logout)).perform(click())
