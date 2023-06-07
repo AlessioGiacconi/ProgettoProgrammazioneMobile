@@ -22,9 +22,11 @@ import org.junit.runner.RunWith
 class LoginInstrumentedTest {
 
     @get:Rule
-    var activityRule : ActivityScenarioRule<LoginActivity> = ActivityScenarioRule(LoginActivity::class.java)
+    var activityRule: ActivityScenarioRule<LoginActivity> =
+        ActivityScenarioRule(LoginActivity::class.java)
+
     @Test
-    fun checkLoginUser(){
+    fun checkLoginUser() {
         onView(withId(R.id.email)).perform(typeText("marco@gmail.com"), closeSoftKeyboard())
         onView(withId(R.id.password)).perform(typeText("qwertyui"), closeSoftKeyboard())
 
